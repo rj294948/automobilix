@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company / MSME Registration | Jain Accounting, Bijoliya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', 'Noto Sans Devanagari', sans-serif; }
+        body { background: #f1f5f9; color: #0f172a; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        header { position: sticky; top: 0; z-index: 900; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1.5px solid rgba(251, 191, 36, 0.5); }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 44px; height: 44px; background: linear-gradient(145deg, #fde047, #f59e0b); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #0f172a; font-size: 18px; }
+        .logo-text h2 { font-size: 18px; font-weight: 800; color: #fff; line-height: 1.2; }
+        .logo-text span { font-size: 11px; color: #fde047; font-weight: 700; display: block; }
+        .nav-links { display: none; gap: 8px; }
+        .nav-links a { color: #e2e8f0; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; }
+        .nav-links a:hover, .nav-links a.active { background: rgba(253, 224, 71, 0.2); color: #fde047; }
+        @media (min-width: 860px) { .nav-links { display: flex; } }
+        .call-btn { background: linear-gradient(135deg, #fde047, #f59e0b); color: #0f172a; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; white-space: nowrap; }
+        .page-hero { background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%); color: #fff; padding: 44px 20px; text-align: center; }
+        .badge { display: inline-block; background: rgba(251, 207, 232, 0.16); border: 1px solid #f9a8d4; color: #fbcfe8; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 800; margin-bottom: 12px; }
+        .page-hero h1 { font-size: clamp(24px, 4.5vw, 40px); font-weight: 800; margin-bottom: 10px; }
+        .page-hero p { max-width: 680px; margin: 0 auto; color: #e0e7ff; font-size: 15px; }
+        .container { max-width: 960px; margin: 28px auto 56px; padding: 0 16px; display: grid; gap: 20px; }
+        .card { background: #fff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 24px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06); }
+        .card h2 { font-size: 20px; font-weight: 800; color: #3730a3; margin-bottom: 12px; }
+        .doc-list { list-style: none; display: grid; gap: 10px; }
+        .doc-list li { background: #f8fafc; border-left: 4px solid #4f46e5; padding: 10px 14px; border-radius: 8px; font-weight: 600; font-size: 14px; }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+        .btn { padding: 12px 22px; border-radius: 12px; font-weight: 800; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-gold { background: linear-gradient(135deg, #fde047, #f59e0b); color: #0f172a; }
+        .btn-wa { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; }
+        .btn-back { background: #e2e8f0; color: #0f172a; }
+        footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 28px 16px; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">CA</div>
+            <div class="logo-text"><h2>JAIN ACCOUNTING</h2><span>Bijoliya, Rajasthan</span></div>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service-gst.html">GST</a>
+            <a href="service-itr.html">ITR</a>
+            <a href="service-loan.html">Loans</a>
+            <a href="service-emitra.html">E-Mitra</a>
+            <a href="service-company.html" class="active">MSME</a>
+            <a href="service-electricity.html">Electricity</a>
+        </nav>
+        <a href="tel:+917737740207" class="call-btn">📞 Call Now</a>
+    </header>
+
+    <section class="page-hero">
+        <div class="badge">🏢 BUSINESS REGISTRATION</div>
+        <h1>Company / MSME (Udyam) Registration</h1>
+        <p>MSME उद्यम रजिस्ट्रेशन, पार्टनरशिप फर्म, कंपनी पंजीकरण और FSSAI फूड लाइसेंस की आसान प्रक्रिया।</p>
+    </section>
+
+    <main class="container">
+        <div class="card">
+            <h2>व्यापार पंजीकरण क्यों ज़रूरी है?</h2>
+            <p>वैध MSME (Udyam) या फर्म रजिस्ट्रेशन से व्यापार को सरकारी योजनाओं, बैंक क्रेडिट, टेंडर और भुगतान सुरक्षा का लाभ मिलता है।</p>
+        </div>
+
+        <div class="card">
+            <h2>आवश्यक दस्तावेज़ (Required Documents)</h2>
+            <ul class="doc-list">
+                <li>✓ संचालकों / साझेदारों के पैन कार्ड व पहचान प्रमाण</li>
+                <li>✓ फर्म/बिजनेस का नाम, कार्य की प्रकृति और शुरू होने की तिथि</li>
+                <li>✓ ऑफिस/दुकान के पते का प्रमाण (बिजली बिल / किरायानामा)</li>
+                <li>✓ बैंक खाता विवरण, ईमेल और चालू मोबाइल नंबर</li>
+            </ul>
+            <div class="cta-row">
+                <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20want%20to%20register%20MSME%20/%20Company." target="_blank" rel="noopener" class="btn btn-wa">💬 WhatsApp Enquiry</a>
+                <a href="tel:+917737740207" class="btn btn-gold">📞 Call +91 7737740207</a>
+                <a href="index.html" class="btn btn-back">← Back to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>© 2026 Jain Accounting &amp; Book-Keeping, Bijoliya, Rajasthan | +91 7737740207</footer>
+</body>
+</html>
