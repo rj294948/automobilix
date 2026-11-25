@@ -416,7 +416,7 @@
             container-type: inline-size;
             container-name: servicebox;
             border-radius: clamp(12px, 6.5cqw, 20px);
-            padding: clamp(8px, 6cqw, 20px);
+            padding: clamp(7px, 5.2cqw, 20px);
             text-align: left;
             transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
             position: relative;
@@ -424,13 +424,339 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            aspect-ratio: 4 / 4.3;
+            aspect-ratio: 3 / 3.7;
             width: 100%;
             height: 100%;
             min-width: 0;
             cursor: pointer;
             border: 1.5px solid rgba(255, 255, 255, 0.35);
             box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+        }
+
+        @media (min-width: 600px) {
+            .service-card {
+                aspect-ratio: 4 / 4.2;
+            }
+        }
+
+        /* Rich CSS Gradient Fallbacks per Service */
+        .fallback-gst { background: linear-gradient(135deg, #1e3a8a 0%, #b45309 100%); }
+        .fallback-itr { background: linear-gradient(135deg, #311042 0%, #9d174d 100%); }
+        .fallback-loan { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
+        .fallback-emitra { background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%); }
+        .fallback-company { background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%); }
+        .fallback-electricity { background: linear-gradient(135deg, #431407 0%, #c2410c 100%); }
+
+        .service-card-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            pointer-events: none;
+            transition: transform 0.45s ease;
+        }
+
+        .service-card:hover .service-card-img {
+            transform: scale(1.07);
+        }
+
+        /* Upper half stays clear to showcase photo; lower half darkens smoothly for sharp white/gold text */
+        .service-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.52) 44%, rgba(15, 23, 42, 0.95) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: #fbbf24;
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.28);
+        }
+
+        .service-top-row {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px;
+            width: 100%;
+        }
+
+        .service-icon-badge {
+            font-size: clamp(12px, 10cqw, 24px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(22px, 16.5cqw, 46px);
+            height: clamp(22px, 16.5cqw, 46px);
+            border-radius: clamp(6px, 4.5cqw, 13px);
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(251, 191, 36, 0.85);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+            flex-shrink: 0;
+        }
+
+        .service-ca-pill {
+            font-size: clamp(6.5px, 4.2cqw, 11px);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #fde047;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(253, 224, 71, 0.55);
+            padding: clamp(2px, 1.4cqw, 4px) clamp(5px, 3.6cqw, 11px);
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .service-bottom-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Full title visible without truncation across all screen sizes */
+        .service-card h3 {
+            display: block;
+            width: 100%;
+            font-size: clamp(9.5px, 5.8cqw, 17.5px);
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.24;
+            word-break: normal;
+            overflow-wrap: break-word;
+            margin-bottom: clamp(5px, 3.2cqw, 12px);
+            text-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.92);
+        }
+
+        .service-card h3 .gold-word {
+            color: #fde047;
+        }
+
+        .service-tap-btn {
+            display: inline-block;
+            font-size: clamp(7.5px, 4.4cqw, 12px);
+            font-weight: 800;
+            color: #0f172a;
+            background: linear-gradient(135deg, #fde047, #f59e0b);
+            padding: clamp(2px, 1.6cqw, 6px) clamp(7px, 4.2cqw, 14px);
+            border-radius: 50px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            white-space: nowrap;
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover .service-tap-btn {
+            transform: translateX(3px);
+        }
+
+        /* --- 5. STRICT 2-COLUMN BLOGS GRID ON ALL SCREEN SIZES (Large, Crystal-Clear Text) --- */
+        .blog-container {
+            padding: 0 clamp(10px, 2.5vw, 28px);
+            max-width: 1180px;
+            margin: 0 auto clamp(44px, 6vw, 68px);
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(10px, 2.2vw, 26px);
+            align-items: stretch;
+        }
+
+        .blog-card {
+            container-type: inline-size;
+            container-name: blogbox;
+            border-radius: clamp(14px, 4.2cqw, 22px);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: clamp(195px, 46cqw, 275px);
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            padding: clamp(12px, 4.4cqw, 24px);
+            text-align: left;
+            cursor: pointer;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.2);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        }
+
+        .blog-card-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            pointer-events: none;
+            transition: transform 0.45s ease;
+        }
+
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.06);
+        }
+
+        .blog-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0.78) 42%, rgba(15, 23, 42, 0.96) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: #fbbf24;
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.32);
+        }
+
+        .blog-top-row {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .blog-tag {
+            font-size: clamp(9.5px, 2.8cqw, 12px);
+            background: rgba(15, 23, 42, 0.92);
+            color: #fde047;
+            border: 1px solid rgba(253, 224, 71, 0.7);
+            padding: clamp(3px, 1.2cqw, 5px) clamp(9px, 3cqw, 15px);
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+
+        .blog-bottom-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .blog-card h4 {
+            display: block;
+            width: 100%;
+            font-size: clamp(13.5px, 4.4cqw, 21px);
+            color: #ffffff;
+            margin-bottom: clamp(6px, 2cqw, 10px);
+            font-weight: 800;
+            line-height: 1.3;
+            word-break: normal;
+            overflow-wrap: break-word;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+        }
+
+        .blog-card h4 .gold-word {
+            color: #fde047;
+        }
+
+        .blog-card p {
+            display: block;
+            font-size: clamp(11px, 3.2cqw, 14.5px);
+            color: #f8fafc;
+            font-weight: 500;
+            margin-bottom: clamp(9px, 2.8cqw, 15px);
+            line-height: 1.42;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+        }
+
+        .read-more {
+            display: inline-block;
+            font-size: clamp(10px, 2.9cqw, 13px);
+            color: #0f172a;
+            background: linear-gradient(135deg, #fde047, #f59e0b);
+            font-weight: 800;
+            padding: clamp(4px, 1.4cqw, 7px) clamp(11px, 3.4cqw, 17px);
+            border-radius: 50px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
+            transition: transform 0.2s ease;
+        }
+
+        .blog-card:hover .read-more {
+            transform: translateX(3px);
+        }
+
+        /* --- 6. WHY CHOOSE US HORIZONTAL 4-COLUMN CARD ROW --- */
+        .trust-strip-section {
+            padding: 0 clamp(8px, 2.5vw, 28px);
+            max-width: 1180px;
+            margin: 0 auto clamp(44px, 6vw, 64px);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(6px, 1.8vw, 22px);
+            align-items: stretch;
+        }
+
+        .trust-box {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-top: 3.5px solid var(--header-blue);
+            border-radius: clamp(11px, 1.8vw, 18px);
+            padding: clamp(10px, 1.8vw, 22px) clamp(5px, 1.2vw, 16px);
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .trust-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 26px rgba(30, 58, 138, 0.14);
+        }
+
+        .trust-icon {
+            font-size: clamp(18px, 2.8vw, 30px);
+            margin-bottom: clamp(4px, 0.8vw, 8px);
+            display: block;
+            line-height: 1.1;
+        }
+
+        .trust-box h4 {
+            font-size: clamp(9.5px, 1.5vw, 16px);
+            font-weight: 800;
+            color: var(--header-blue);
+            line-height: 1.22;
+            margin-bottom: 4px;
+            word-break: normal;
+        }
+
+        .trust-box p {
+            font-size: clamp(8px, 1.2vw, 13px);
+            color: var(--text-muted);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 600px) {
+            .service-card {
+                aspect-ratio: 3 / 3.7;
+            }
         }
 
         /* Rich CSS Gradient Fallbacks per Service */
@@ -483,12 +809,12 @@
         }
 
         .service-icon-badge {
-            font-size: clamp(13px, 11cqw, 24px);
+            font-size: clamp(13px, 13cqw, 22px);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: clamp(24px, 18cqw, 46px);
-            height: clamp(24px, 18cqw, 46px);
+            width: clamp(26px, 24cqw, 46px);
+            height: clamp(26px, 24cqw, 46px);
             border-radius: clamp(7px, 5cqw, 13px);
             background: rgba(15, 23, 42, 0.85);
             border: 1px solid rgba(251, 191, 36, 0.85);
@@ -497,14 +823,14 @@
         }
 
         .service-ca-pill {
-            font-size: clamp(7px, 4.5cqw, 11px);
+            font-size: clamp(7px, 6.2cqw, 11px);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.4px;
             color: #fde047;
             background: rgba(15, 23, 42, 0.85);
             border: 1px solid rgba(253, 224, 71, 0.55);
-            padding: clamp(2px, 1.5cqw, 4px) clamp(5px, 3.8cqw, 11px);
+            padding: clamp(2px, 1.8cqw, 4px) clamp(5px, 4.5cqw, 10px);
             border-radius: 50px;
             white-space: nowrap;
         }
@@ -516,34 +842,39 @@
             margin-top: auto;
         }
 
-        /* Proportional cqw typography prevents overflow and keeps every row height identical */
+        /* Full-title fluid typography without ellipsis truncation */
         .service-card h3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            display: block;
             width: 100%;
-            font-size: clamp(10px, 6.2cqw, 17.5px);
+            font-size: clamp(9.5px, 8.2cqw, 16px);
             color: #ffffff;
             font-weight: 800;
-            line-height: 1.26;
+            line-height: 1.22;
             word-break: normal;
             overflow-wrap: break-word;
             margin-bottom: clamp(5px, 3.5cqw, 12px);
             text-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.9);
         }
 
-        .service-card h3 .gold-word {
+        .hl-gold {
             color: #fde047;
+        }
+
+        .hl-pink {
+            color: #f9a8d4;
+        }
+
+        .hl-sky {
+            color: #7dd3fc;
         }
 
         .service-tap-btn {
             display: inline-block;
-            font-size: clamp(8px, 4.6cqw, 12px);
+            font-size: clamp(8.5px, 7.2cqw, 12.5px);
             font-weight: 800;
             color: #0f172a;
             background: linear-gradient(135deg, #fde047, #f59e0b);
-            padding: clamp(2.5px, 1.8cqw, 6px) clamp(7px, 4.5cqw, 14px);
+            padding: clamp(3px, 2.5cqw, 6px) clamp(8px, 6cqw, 14px);
             border-radius: 50px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
             white-space: nowrap;
@@ -647,10 +978,7 @@
         }
 
         .blog-card h4 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            display: block;
             width: 100%;
             font-size: clamp(11px, 3.6cqw, 19px);
             color: #ffffff;
@@ -671,77 +999,6 @@
             color: #e2e8f0;
             font-weight: 500;
             margin-bottom: clamp(6px, 2.2cqw, 13px);
-            line-height: 1.35;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .read-more {
-            display: inline-block;
-            font-size: clamp(8px, 2.4cqw, 12.5px);
-            color: #0f172a;
-            background: linear-gradient(135deg, #fde047, #f59e0b);
-            font-weight: 800;
-            padding: clamp(2.5px, 1.1cqw, 6px) clamp(8px, 2.8cqw, 15px);
-            border-radius: 50px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-            white-space: nowrap;
-            transition: transform 0.2s ease;
-        }
-
-        .blog-card:hover .read-more {
-            transform: translateX(3px);
-        }
-
-        /* --- 6. WHY CHOOSE US 4-COLUMN TRUST STRIP --- */
-        .trust-strip-section {
-            padding: 0 clamp(10px, 2.5vw, 28px);
-            max-width: 1180px;
-            margin: 0 auto clamp(44px, 6vw, 64px);
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: clamp(8px, 1.8vw, 22px);
-        }
-
-        .trust-box {
-            background: linear-gradient(145deg, #ffffff 0%, #eff6ff 100%);
-            border: 1.5px solid #bfdbfe;
-            border-radius: clamp(12px, 1.8vw, 18px);
-            padding: clamp(11px, 1.8vw, 22px) clamp(6px, 1.2vw, 16px);
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(30, 58, 138, 0.07);
-            min-width: 0;
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
-
-        .trust-box:hover {
-            transform: translateY(-3px);
-            border-color: var(--gold);
-        }
-
-        .trust-icon {
-            font-size: clamp(18px, 2.8vw, 30px);
-            margin-bottom: clamp(4px, 0.8vw, 8px);
-            display: block;
-        }
-
-        .trust-box h4 {
-            font-size: clamp(10px, 1.45vw, 15.5px);
-            font-weight: 800;
-            color: var(--header-blue);
-            line-height: 1.25;
-            margin-bottom: 4px;
-        }
-
-        .trust-box p {
-            font-size: clamp(8.5px, 1.15vw, 12.5px);
-            color: var(--text-muted);
-            font-weight: 500;
             line-height: 1.35;
         }
 
@@ -1133,7 +1390,7 @@
     <header>
         <img
             class="header-bg-img"
-            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80"
             alt="Finance Workspace Header"
             onerror="this.style.display='none'"
         >
@@ -1161,7 +1418,7 @@
     <section class="hero">
         <img
             class="hero-bg-img"
-            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
             alt="Accounting Office Workspace"
             onerror="this.style.display='none'"
         >
@@ -1222,7 +1479,7 @@
                 <span class="service-ca-pill">GST</span>
             </div>
             <div class="service-bottom-content">
-                <h3><span class="gold-word">GST</span> Registration &amp; Returns</h3>
+                <h3><span class="hl-gold">GST</span> Registration &amp; Returns</h3>
                 <span class="service-tap-btn">Details →</span>
             </div>
         </button>
@@ -1242,7 +1499,7 @@
                 <span class="service-ca-pill">ITR</span>
             </div>
             <div class="service-bottom-content">
-                <h3>Income Tax Return (<span class="gold-word">ITR</span>)</h3>
+                <h3>Income Tax Return (<span class="hl-pink">ITR</span>)</h3>
                 <span class="service-tap-btn">Details →</span>
             </div>
         </button>
@@ -1262,7 +1519,7 @@
                 <span class="service-ca-pill">LOAN</span>
             </div>
             <div class="service-bottom-content">
-                <h3>Home &amp; Business <span class="gold-word">Loans</span></h3>
+                <h3>Home &amp; Business <span class="hl-sky">Loans</span></h3>
                 <span class="service-tap-btn">Details →</span>
             </div>
         </button>
@@ -1282,7 +1539,7 @@
                 <span class="service-ca-pill">DIGITAL</span>
             </div>
             <div class="service-bottom-content">
-                <h3><span class="gold-word">E-Mitra</span> &amp; Online Forms</h3>
+                <h3><span class="hl-gold">E-Mitra</span> &amp; Online Forms</h3>
                 <span class="service-tap-btn">Details →</span>
             </div>
         </button>
@@ -1302,7 +1559,7 @@
                 <span class="service-ca-pill">MSME</span>
             </div>
             <div class="service-bottom-content">
-                <h3>Company / <span class="gold-word">MSME</span> Registration</h3>
+                <h3>Company / <span class="hl-pink">MSME</span> Reg.</h3>
                 <span class="service-tap-btn">Details →</span>
             </div>
         </button>
@@ -1322,7 +1579,7 @@
                 <span class="service-ca-pill">AVVNL</span>
             </div>
             <div class="service-bottom-content">
-                <h3><span class="gold-word">Electricity</span> Dept. Works</h3>
+                <h3><span class="hl-gold">Electricity</span> Dept. Works</h3>
                 <span class="service-tap-btn">Details →</span>
             </div>
         </button>
@@ -1371,27 +1628,27 @@
             </div>
             <div class="blog-bottom-content">
                 <h4><span class="gold-word">ITR</span> फाइल करने के 5 बड़े फायदे</h4>
-                <p>जानें कि ITR फाइल करने से बैंक लोन, TDS रिफंड और वीजा में कैसे मदद मिलती है।</p>
+                <p>क्या आप जानते हैं कि ITR फाइल करने से आपको बैंक लोन और वीजा में कैसे मदद मिलती है?</p>
                 <span class="read-more">Read More →</span>
             </div>
         </button>
 
-        <!-- Blog 3 -->
-        <button type="button" class="blog-card" onclick="openBlogModal('mudra-loan')">
+        <!-- Blog 3: Updated Comprehensive Home, Business & MSME Loans Blog -->
+        <button type="button" class="blog-card" onclick="openBlogModal('all-loans-guide')">
             <img
                 class="blog-card-img"
                 src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85"
-                alt="Mudra Loan Scheme Guide"
+                alt="Home Business and MSME Loans Guide"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
             <div class="blog-card-overlay"></div>
             <div class="blog-top-row">
-                <span class="blog-tag">Loan Scheme</span>
+                <span class="blog-tag">Loan Guide</span>
             </div>
             <div class="blog-bottom-content">
-                <h4><span class="gold-word">Mudra Loan</span> (मुद्रा लोन) कैसे लें?</h4>
-                <p>छोटे बिजनेस और दुकानदारों के लिए सरकारी सब्सिडी वाला लोन पाने का पूरा तरीका।</p>
+                <h4><span class="gold-word">Home, Business</span> और MSME लोन कैसे लें?</h4>
+                <p>घर, दुकान या बिजनेस बढ़ाने के लिए कम ब्याज पर बैंक लोन, प्रोजेक्ट रिपोर्ट और जरूरी कागजात की पूरी जानकारी।</p>
                 <span class="read-more">Read More →</span>
             </div>
         </button>
@@ -1411,7 +1668,7 @@
             </div>
             <div class="blog-bottom-content">
                 <h4><span class="gold-word">MSME</span> रजिस्ट्रेशन के फायदे</h4>
-                <p>छोटे कारोबारियों के लिए सरकारी योजनाओं, सस्ते लोन और सब्सिडी का लाभ उठाने का आसान तरीका।</p>
+                <p>छोटे कारोबारियों के लिए सरकारी योजनाओं का लाभ उठाने का सबसे आसान तरीका।</p>
                 <span class="read-more">Read More →</span>
             </div>
         </button>
@@ -1658,20 +1915,20 @@
                     </ul>
                 `,
                 waText: "Hello Jain Accounting, I want to file my ITR after reading your article."
-            },
-            'mudra-loan': {
-                title: "🏦 Mudra Loan (मुद्रा लोन) कैसे लें?",
+            'all-loans-guide': {
+                title: "🏦 Home, Business और MSME लोन कैसे लें?",
                 content: `
-                    <p>छोटे व्यापारियों, दुकानदारों और नए स्टार्टअप्स को बिना किसी गारंटी (Collateral-Free) के व्यापार बढ़ाने के लिए सरकार द्वारा <strong>प्रधानमंत्री मुद्रा योजना (PMMY)</strong> चलाई जा रही है।</p>
-                    <div class="modal-list-title">मुद्रा लोन की 3 श्रेणियां:</div>
+                    <p>घर खरीदने, मकान बनवाने या अपने व्यापार को बढ़ाने के लिए सही बैंक लोन चुनना और मजबूत <strong>प्रोजेक्ट रिपोर्ट (CMA Data)</strong> तैयार करना सबसे महत्वपूर्ण कदम है।</p>
+                    <div class="modal-list-title">उपलब्ध प्रमुख बैंक लोन एवं आवश्यक तैयारी:</div>
                     <ul class="modal-list">
-                        <li><strong>शिशु लोन (Shishu):</strong> नया व्यापार शुरू करने के लिए ₹50,000 तक का लोन।</li>
-                        <li><strong>किशोर लोन (Kishore):</strong> व्यापार विस्तार के लिए ₹50,000 से ₹5 लाख तक का लोन।</li>
-                        <li><strong>तरुण लोन (Tarun):</strong> स्थापित व्यापार के लिए ₹5 लाख से ₹10 लाख तक का लोन।</li>
+                        <li><strong>1. होम लोन व प्रॉपर्टी लोन (Home &amp; Mortgage Loan):</strong> नया घर लेने, प्लॉट पर निर्माण या प्रॉपर्टी पर कम ब्याज दर पर लोन की सुविधा।</li>
+                        <li><strong>2. बिजनेस लोन व CC Limit:</strong> दुकानदारों, ट्रेडर्स और फैक्ट्रियों के लिए वर्किंग कैपिटल, कैश क्रेडिट (CC) और टर्म लोन।</li>
+                        <li><strong>3. MSME एवं सरकारी सब्सिडी लोन:</strong> प्रधानमंत्री मुद्रा योजना (PMMY), PMEGP और राजस्थानी उद्यम योजनाओं के तहत सब्सिडी लोन।</li>
+                        <li><strong>4. आवश्यक दस्तावेज़:</strong> पिछले 2-3 साल का ITR, बैंक स्टेटमेंट, आधार-पैन, GST/MSME सर्टिफिकेट और CA द्वारा प्रमाणित प्रोजेक्ट रिपोर्ट।</li>
                     </ul>
-                    <p>मुद्रा लोन के लिए सही <strong>प्रोजेक्ट रिपोर्ट (Project Report)</strong> और बैंक फाइल तैयार करवाने के लिए हमारे ऑफिस विजिट करें।</p>
+                    <p>सही बैंक चयन, प्रोजेक्ट रिपोर्ट और लोन फाइल अप्रूवल में पूरी सहायता के लिए आज ही <strong>Jain Accounting &amp; Book-Keeping, Bijoliya</strong> से संपर्क करें।</p>
                 `,
-                waText: "Hello Jain Accounting, I want to apply for Mudra Loan and need Project Report help."
+                waText: "Hello Jain Accounting, I want guidance for Home / Business / MSME Loan and Project Report."
             },
             'msme-reg': {
                 title: "🏢 MSME रजिस्ट्रेशन के फायदे",
