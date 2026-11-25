@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jain Accounting & Book-Keeping | Bijoliya</title>
-    <!-- Google Fonts: Outfit & Noto Sans Devanagari for crisp English + Hindi rendering -->
+    <meta name="description" content="Jain Accounting & Book-Keeping in Bijoliya, Rajasthan — GST Registration & Returns, Income Tax Return (ITR), Home & Business Loans, E-Mitra, Company/MSME Registration & Electricity Dept. Works.">
+    <meta name="robots" content="index, follow">
+    <title>Jain Accounting & Book-Keeping | Bijoliya, Rajasthan</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AccountingService",
+      "name": "Jain Accounting & Book-Keeping",
+      "telephone": "+91-7737740207",
+      "email": "ravijain236129@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bijoliya",
+        "addressRegion": "Rajasthan",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
     <style>
-        /* --- GLOBAL RESET & VARIABLES (100% Immediately Visible, Zero Hidden Opacity) --- */
         * {
             margin: 0;
             padding: 0;
@@ -54,7 +72,6 @@
             --text-muted: #475569;
         }
 
-        /* --- TEXT HIGHLIGHT ACCENTS --- */
         .hero-accent-gold {
             background: rgba(251, 191, 36, 0.24);
             color: #fde047;
@@ -95,7 +112,7 @@
             color: #9d174d;
         }
 
-        /* --- 1. STICKY NAVY BLUE HEADER WITH FINANCE WORKSPACE PHOTO --- */
+        /* --- 1. STICKY NAVY BLUE HEADER --- */
         header {
             position: sticky;
             top: 0;
@@ -105,6 +122,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             box-shadow: 0 6px 24px rgba(15, 23, 42, 0.36);
             border-bottom: 1.5px solid rgba(251, 191, 36, 0.5);
             overflow: hidden;
@@ -124,7 +142,7 @@
         .header-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.86) 0%, rgba(30, 58, 138, 0.82) 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 58, 138, 0.84) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -135,6 +153,7 @@
             gap: clamp(9px, 1.8vw, 14px);
             position: relative;
             z-index: 2;
+            flex-shrink: 0;
         }
 
         .logo-icon {
@@ -192,6 +211,36 @@
             margin-top: 2px;
         }
 
+        .page-nav {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-nav a {
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #e2e8f0;
+            transition: background 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .page-nav a:hover,
+        .page-nav a.active {
+            background: rgba(253, 224, 71, 0.18);
+            color: #fde047;
+        }
+
+        @media (min-width: 900px) {
+            .page-nav {
+                display: flex;
+            }
+        }
+
         .header-call {
             position: relative;
             z-index: 2;
@@ -213,6 +262,41 @@
         .header-call:hover {
             transform: translateY(-1px) scale(1.03);
             box-shadow: 0 6px 20px rgba(245, 158, 11, 0.55);
+        }
+
+        .mobile-subnav {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 8px 12px;
+            background: #0f172a;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.25);
+            scrollbar-width: none;
+        }
+
+        .mobile-subnav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-subnav a {
+            flex-shrink: 0;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f8fafc;
+        }
+
+        .mobile-subnav a.active {
+            background: #fde047;
+            color: #0f172a;
+        }
+
+        @media (min-width: 900px) {
+            .mobile-subnav {
+                display: none;
+            }
         }
 
         /* --- 2. FULL-BLEED HERO BANNER --- */
@@ -329,7 +413,7 @@
             box-shadow: 0 10px 28px rgba(37, 211, 102, 0.52);
         }
 
-        /* --- 3. 4-COLUMN STATS BAR ON ALL SCREEN SIZES --- */
+        /* --- 3. 4-COLUMN STATS BAR --- */
         .stats-container {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -401,7 +485,7 @@
             border-radius: 5px;
         }
 
-        /* --- 4. STRICT 3-COLUMN SERVICES GRID ON ALL SCREEN SIZES (Phone, Tablet, Laptop, Desktop) --- */
+        /* --- 4. STRICT 3-COLUMN SERVICES GRID --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -413,8 +497,6 @@
         }
 
         .service-card {
-            container-type: inline-size;
-            container-name: servicebox;
             border-radius: clamp(14px, 2.2vw, 20px);
             padding: clamp(10px, 1.8vw, 20px) clamp(6px, 1.4vw, 18px);
             text-align: center;
@@ -430,7 +512,6 @@
             width: 100%;
             height: 100%;
             min-width: 0;
-            cursor: pointer;
             border: 1.5px solid rgba(255, 255, 255, 0.45);
             box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
         }
@@ -445,7 +526,6 @@
             }
         }
 
-        /* Rich CSS Gradient Fallbacks per Service */
         .fallback-gst { background: linear-gradient(135deg, #1e3a8a 0%, #b45309 100%); }
         .fallback-itr { background: linear-gradient(135deg, #311042 0%, #9d174d 100%); }
         .fallback-loan { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
@@ -469,11 +549,10 @@
             transform: scale(1.07);
         }
 
-        /* Stronger dark gradient covering lower 65% for maximum white/gold contrast */
         .service-card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.16) 0%, rgba(15, 23, 42, 0.72) 38%, rgba(15, 23, 42, 0.96) 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.14) 0%, rgba(15, 23, 42, 0.68) 40%, rgba(15, 23, 42, 0.96) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -554,7 +633,6 @@
             }
         }
 
-        /* Centered, bold, legible title across all screen sizes without crowding */
         .service-card h3 {
             display: block;
             width: 100%;
@@ -568,17 +646,9 @@
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
         }
 
-        .hl-gold {
-            color: #fde047;
-        }
-
-        .hl-pink {
-            color: #f9a8d4;
-        }
-
-        .hl-sky {
-            color: #7dd3fc;
-        }
+        .hl-gold { color: #fde047; }
+        .hl-pink { color: #f9a8d4; }
+        .hl-sky { color: #7dd3fc; }
 
         .service-tap-btn {
             display: inline-flex;
@@ -600,7 +670,7 @@
             transform: translateX(3px);
         }
 
-        /* --- 5. STRICT 2-COLUMN BLOGS GRID ON ALL SCREEN SIZES (Large, Crystal-Clear Text) --- */
+        /* --- 5. STRICT 2-COLUMN BLOGS GRID --- */
         .blog-container {
             padding: 0 clamp(10px, 2.5vw, 28px);
             max-width: 1180px;
@@ -626,7 +696,6 @@
             min-width: 0;
             padding: clamp(12px, 4.4cqw, 24px);
             text-align: left;
-            cursor: pointer;
             border: 1.5px solid rgba(255, 255, 255, 0.4);
             background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
             box-shadow: 0 10px 26px rgba(15, 23, 42, 0.2);
@@ -652,7 +721,7 @@
         .blog-card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0.78) 42%, rgba(15, 23, 42, 0.96) 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.24) 0%, rgba(15, 23, 42, 0.74) 42%, rgba(15, 23, 42, 0.96) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -737,7 +806,7 @@
             transform: translateX(3px);
         }
 
-        /* --- 6. WHY CHOOSE US HORIZONTAL 4-COLUMN CARD ROW --- */
+        /* --- 6. WHY CHOOSE US 4-COLUMN TRUST STRIP --- */
         .trust-strip-section {
             padding: 0 clamp(8px, 2.5vw, 28px);
             max-width: 1180px;
@@ -786,7 +855,6 @@
             color: var(--header-blue);
             line-height: 1.22;
             margin-bottom: 4px;
-            word-break: normal;
         }
 
         .trust-box p {
@@ -796,256 +864,7 @@
             line-height: 1.3;
         }
 
-        @media (max-width: 600px) {
-            .service-card {
-                aspect-ratio: 3 / 3.7;
-            }
-        }
-
-        /* Rich CSS Gradient Fallbacks per Service */
-        .fallback-gst { background: linear-gradient(135deg, #1e3a8a 0%, #b45309 100%); }
-        .fallback-itr { background: linear-gradient(135deg, #311042 0%, #9d174d 100%); }
-        .fallback-loan { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
-        .fallback-emitra { background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%); }
-        .fallback-company { background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%); }
-        .fallback-electricity { background: linear-gradient(135deg, #431407 0%, #c2410c 100%); }
-
-        .service-card-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            z-index: 0;
-            pointer-events: none;
-            transition: transform 0.45s ease;
-        }
-
-        .service-card:hover .service-card-img {
-            transform: scale(1.07);
-        }
-
-        /* Upper half stays clear to showcase photo; lower half darkens smoothly for sharp white/gold text */
-        .service-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.48) 46%, rgba(15, 23, 42, 0.94) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: #fbbf24;
-            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.28);
-        }
-
-        .service-top-row {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4px;
-            width: 100%;
-        }
-
-        .service-icon-badge {
-            font-size: clamp(13px, 13cqw, 22px);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: clamp(26px, 24cqw, 46px);
-            height: clamp(26px, 24cqw, 46px);
-            border-radius: clamp(7px, 5cqw, 13px);
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(251, 191, 36, 0.85);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
-            flex-shrink: 0;
-        }
-
-        .service-ca-pill {
-            font-size: clamp(7px, 6.2cqw, 11px);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            color: #fde047;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(253, 224, 71, 0.55);
-            padding: clamp(2px, 1.8cqw, 4px) clamp(5px, 4.5cqw, 10px);
-            border-radius: 50px;
-            white-space: nowrap;
-        }
-
-        .service-bottom-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        /* Full-title fluid typography without ellipsis truncation */
-        .service-card h3 {
-            display: block;
-            width: 100%;
-            font-size: clamp(9.5px, 8.2cqw, 16px);
-            color: #ffffff;
-            font-weight: 800;
-            line-height: 1.22;
-            word-break: normal;
-            overflow-wrap: break-word;
-            margin-bottom: clamp(5px, 3.5cqw, 12px);
-            text-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.9);
-        }
-
-        .hl-gold {
-            color: #fde047;
-        }
-
-        .hl-pink {
-            color: #f9a8d4;
-        }
-
-        .hl-sky {
-            color: #7dd3fc;
-        }
-
-        .service-tap-btn {
-            display: inline-block;
-            font-size: clamp(8.5px, 7.2cqw, 12.5px);
-            font-weight: 800;
-            color: #0f172a;
-            background: linear-gradient(135deg, #fde047, #f59e0b);
-            padding: clamp(3px, 2.5cqw, 6px) clamp(8px, 6cqw, 14px);
-            border-radius: 50px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-            white-space: nowrap;
-            transition: transform 0.2s ease;
-        }
-
-        .service-card:hover .service-tap-btn {
-            transform: translateX(3px);
-        }
-
-        /* --- 5. STRICT 2-COLUMN BLOGS GRID ON ALL SCREEN SIZES (Phone, Tablet, Laptop, Desktop) --- */
-        .blog-container {
-            padding: 0 clamp(10px, 2.5vw, 28px);
-            max-width: 1180px;
-            margin: 0 auto clamp(44px, 6vw, 68px);
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: clamp(10px, 2.2vw, 26px);
-            align-items: stretch;
-        }
-
-        .blog-card {
-            container-type: inline-size;
-            container-name: blogbox;
-            border-radius: clamp(12px, 4.2cqw, 22px);
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            aspect-ratio: 16 / 11;
-            width: 100%;
-            height: 100%;
-            min-width: 0;
-            padding: clamp(9px, 3.8cqw, 22px);
-            text-align: left;
-            cursor: pointer;
-            border: 1.5px solid rgba(255, 255, 255, 0.35);
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-        }
-
-        .blog-card-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            z-index: 0;
-            pointer-events: none;
-            transition: transform 0.45s ease;
-        }
-
-        .blog-card:hover .blog-card-img {
-            transform: scale(1.06);
-        }
-
-        .blog-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.14) 0%, rgba(15, 23, 42, 0.62) 45%, rgba(15, 23, 42, 0.95) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-4px);
-            border-color: #fbbf24;
-            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.28);
-        }
-
-        .blog-top-row {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .blog-tag {
-            font-size: clamp(8px, 2.5cqw, 11.5px);
-            background: rgba(15, 23, 42, 0.86);
-            color: #fde047;
-            border: 1px solid rgba(253, 224, 71, 0.6);
-            padding: clamp(2.5px, 1cqw, 5px) clamp(7px, 2.6cqw, 14px);
-            border-radius: 50px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            white-space: nowrap;
-        }
-
-        .blog-bottom-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .blog-card h4 {
-            display: block;
-            width: 100%;
-            font-size: clamp(11px, 3.6cqw, 19px);
-            color: #ffffff;
-            margin-bottom: clamp(4px, 1.5cqw, 8px);
-            font-weight: 800;
-            line-height: 1.28;
-            word-break: normal;
-            overflow-wrap: break-word;
-            text-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.9);
-        }
-
-        .blog-card h4 .gold-word {
-            color: #fde047;
-        }
-
-        .blog-card p {
-            font-size: clamp(9px, 2.6cqw, 13.5px);
-            color: #e2e8f0;
-            font-weight: 500;
-            margin-bottom: clamp(6px, 2.2cqw, 13px);
-            line-height: 1.35;
-        }
-
-        /* --- 7. QUICK FREE CONSULTATION WHATSAPP INQUIRY FORM --- */
+        /* --- 7. WHATSAPP INQUIRY FORM --- */
         .inquiry-section {
             padding: 0 16px;
             margin-bottom: 56px;
@@ -1116,7 +935,6 @@
             box-shadow: 0 10px 26px rgba(37, 211, 102, 0.45);
         }
 
-        /* --- INLINE ENQUIRY STATUS & DIRECT WHATSAPP FALLBACK --- */
         .inquiry-feedback {
             display: none;
             margin-top: 14px;
@@ -1269,11 +1087,11 @@
             margin-top: 18px;
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        footer .footer-links button {
+        footer .footer-links a {
             background: rgba(253, 224, 71, 0.14);
             border: 1px solid rgba(253, 224, 71, 0.35);
             color: #fde047;
@@ -1284,7 +1102,7 @@
             transition: background 0.2s ease;
         }
 
-        footer .footer-links button:hover {
+        footer .footer-links a:hover {
             background: rgba(253, 224, 71, 0.28);
         }
 
@@ -1330,125 +1148,6 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* --- INTERACTIVE MODAL POPUP --- */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.76);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-box {
-            background: #ffffff;
-            width: 100%;
-            max-width: 540px;
-            max-height: 88vh;
-            border-radius: 22px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
-            color: #ffffff;
-            padding: 18px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            border-bottom: 2px solid #f59e0b;
-        }
-
-        .modal-header h3 {
-            font-size: 17px;
-            font-weight: 800;
-            line-height: 1.35;
-        }
-
-        .modal-close {
-            background: rgba(255, 255, 255, 0.18);
-            color: #ffffff;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.32);
-        }
-
-        .modal-body {
-            padding: 20px;
-            overflow-y: auto;
-            font-size: 14px;
-            color: #1e293b;
-        }
-
-        .modal-body p {
-            margin-bottom: 12px;
-        }
-
-        .modal-list-title {
-            font-weight: 800;
-            color: var(--header-blue);
-            margin: 14px 0 8px;
-            font-size: 14.5px;
-        }
-
-        .modal-list {
-            list-style: none;
-            margin-bottom: 16px;
-        }
-
-        .modal-list li {
-            padding: 8px 12px;
-            background: #f8fafc;
-            border-left: 3.5px solid var(--gold);
-            border-radius: 8px;
-            margin-bottom: 7px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #0f172a;
-        }
-
-        .modal-footer {
-            padding: 14px 20px;
-            background: #f8fafc;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            gap: 12px;
-        }
-
-        .modal-footer a {
-            flex: 1;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 13.5px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
         /* --- TOAST NOTIFICATION --- */
         .toast-msg {
             position: fixed;
@@ -1475,7 +1174,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* --- FORM RESPONSIVE COLUMNS ON TABLET & DESKTOP --- */
         @media (min-width: 640px) {
             .inquiry-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1504,7 +1202,7 @@
         >
         <div class="header-overlay"></div>
 
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-icon" aria-label="CA Logo Badge">
                 <span class="logo-icon-ca">CA</span>
                 <div class="logo-icon-bars" aria-hidden="true">
@@ -1519,8 +1217,28 @@
             </div>
         </a>
 
+        <nav class="page-nav" aria-label="Primary Navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="service-gst.html">GST</a>
+            <a href="service-itr.html">ITR</a>
+            <a href="service-loan.html">Loans</a>
+            <a href="service-emitra.html">E-Mitra</a>
+            <a href="service-company.html">MSME</a>
+            <a href="service-electricity.html">Electricity</a>
+        </nav>
+
         <a href="tel:+917737740207" class="header-call">📞 Call Now</a>
     </header>
+
+    <div class="mobile-subnav" aria-label="Mobile Navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="service-gst.html">GST</a>
+        <a href="service-itr.html">ITR</a>
+        <a href="service-loan.html">Loans</a>
+        <a href="service-emitra.html">E-Mitra</a>
+        <a href="service-company.html">MSME</a>
+        <a href="service-electricity.html">Electricity</a>
+    </div>
 
     <!-- 2. FULL-BLEED HERO BANNER -->
     <section class="hero">
@@ -1539,7 +1257,7 @@
 
             <div class="hero-btns">
                 <a href="tel:+917737740207" class="btn btn-call">📞 Call: +91 7737740207</a>
-                <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20need%20consultation%20regarding%20accounting/tax%20services." target="_blank" rel="noopener" class="btn btn-wa">💬 WhatsApp Us</a>
+                <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20need%20consultation%20regarding%20accounting/tax%20services." target="_blank" rel="noopener noreferrer" class="btn btn-wa">💬 WhatsApp Us</a>
             </div>
         </div>
     </section>
@@ -1564,16 +1282,15 @@
         </div>
     </div>
 
-    <!-- 4. SERVICES SECTION: STRICTLY 3 COLUMNS PER ROW ON ALL SCREEN SIZES -->
+    <!-- 4. SERVICES SECTION: SEPARATE PAGE LINKS -->
     <div class="section-header" id="services">
         <h2>Our <span class="highlight-yellow">CA</span> Services</h2>
-        <p>आवश्यक दस्तावेज़ (Documents) और पूरी जानकारी देखने के लिए किसी भी सर्विस पर क्लिक करें</p>
+        <p>पूरी जानकारी और आवश्यक दस्तावेज़ देखने के लिए किसी भी सर्विस पेज पर जाएं</p>
         <div class="line"></div>
     </div>
 
     <div class="services-grid">
-        <!-- Service 1: GST Registration & Returns -->
-        <button type="button" class="service-card fallback-gst" onclick="openServiceModal('gst')">
+        <a href="service-gst.html" class="service-card fallback-gst">
             <img
                 class="service-card-img"
                 src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=85"
@@ -1588,12 +1305,11 @@
             </div>
             <div class="service-bottom-content">
                 <h3><span class="hl-gold">GST</span> Registration &amp; Returns</h3>
-                <span class="service-tap-btn">Details →</span>
+                <span class="service-tap-btn">Open Page →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Service 2: Income Tax Return ITR -->
-        <button type="button" class="service-card fallback-itr" onclick="openServiceModal('itr')">
+        <a href="service-itr.html" class="service-card fallback-itr">
             <img
                 class="service-card-img"
                 src="https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=800&q=85"
@@ -1608,12 +1324,11 @@
             </div>
             <div class="service-bottom-content">
                 <h3>Income Tax Return (<span class="hl-pink">ITR</span>)</h3>
-                <span class="service-tap-btn">Details →</span>
+                <span class="service-tap-btn">Open Page →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Service 3: Home & Business Loans -->
-        <button type="button" class="service-card fallback-loan" onclick="openServiceModal('loan')">
+        <a href="service-loan.html" class="service-card fallback-loan">
             <img
                 class="service-card-img"
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=85"
@@ -1628,12 +1343,11 @@
             </div>
             <div class="service-bottom-content">
                 <h3>Home &amp; Business <span class="hl-sky">Loans</span></h3>
-                <span class="service-tap-btn">Details →</span>
+                <span class="service-tap-btn">Open Page →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Service 4: E-Mitra & Online Forms -->
-        <button type="button" class="service-card fallback-emitra" onclick="openServiceModal('emitra')">
+        <a href="service-emitra.html" class="service-card fallback-emitra">
             <img
                 class="service-card-img"
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85"
@@ -1648,12 +1362,11 @@
             </div>
             <div class="service-bottom-content">
                 <h3><span class="hl-gold">E-Mitra</span> &amp; Online Forms</h3>
-                <span class="service-tap-btn">Details →</span>
+                <span class="service-tap-btn">Open Page →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Service 5: Company / MSME Registration -->
-        <button type="button" class="service-card fallback-company" onclick="openServiceModal('company')">
+        <a href="service-company.html" class="service-card fallback-company">
             <img
                 class="service-card-img"
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=85"
@@ -1668,12 +1381,11 @@
             </div>
             <div class="service-bottom-content">
                 <h3>Company / <span class="hl-pink">MSME</span> Reg.</h3>
-                <span class="service-tap-btn">Details →</span>
+                <span class="service-tap-btn">Open Page →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Service 6: Electricity Dept. Works -->
-        <button type="button" class="service-card fallback-electricity" onclick="openServiceModal('electricity')">
+        <a href="service-electricity.html" class="service-card fallback-electricity">
             <img
                 class="service-card-img"
                 src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=85"
@@ -1688,21 +1400,20 @@
             </div>
             <div class="service-bottom-content">
                 <h3><span class="hl-gold">Electricity</span> Dept. Works</h3>
-                <span class="service-tap-btn">Details →</span>
+                <span class="service-tap-btn">Open Page →</span>
             </div>
-        </button>
+        </a>
     </div>
 
-    <!-- 5. LATEST UPDATES & BLOGS SECTION: STRICTLY 2 COLUMNS PER ROW ON ALL SCREEN SIZES -->
+    <!-- 5. LATEST UPDATES & BLOGS SECTION: SEPARATE PAGE LINKS -->
     <div class="section-header" id="blogs">
         <h2>Latest <span class="highlight-yellow">CA</span> Updates &amp; Blogs</h2>
-        <p>टैक्स, लोन और सरकारी योजनाओं की ताज़ा जानकारी पढ़ने के लिए कार्ड पर क्लिक करें</p>
+        <p>पूरा लेख पढ़ने के लिए किसी भी ब्लॉग पेज पर जाएं</p>
         <div class="line"></div>
     </div>
 
     <div class="blog-container">
-        <!-- Blog 1 -->
-        <button type="button" class="blog-card" onclick="openBlogModal('gst-dates')">
+        <a href="blog-gst-dates.html" class="blog-card">
             <img
                 class="blog-card-img"
                 src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=85"
@@ -1717,12 +1428,11 @@
             <div class="blog-bottom-content">
                 <h4><span class="gold-word">GST</span> रिटर्न की नई तारीखें (2026)</h4>
                 <p>जानें कि इस साल GST रिटर्न भरने की लास्ट डेट क्या है और लेट फीस से कैसे बचें।</p>
-                <span class="read-more">Read More →</span>
+                <span class="read-more">Read Article →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Blog 2 -->
-        <button type="button" class="blog-card" onclick="openBlogModal('itr-benefits')">
+        <a href="blog-itr-benefits.html" class="blog-card">
             <img
                 class="blog-card-img"
                 src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=85"
@@ -1737,12 +1447,11 @@
             <div class="blog-bottom-content">
                 <h4><span class="gold-word">ITR</span> फाइल करने के 5 बड़े फायदे</h4>
                 <p>क्या आप जानते हैं कि ITR फाइल करने से आपको बैंक लोन और वीजा में कैसे मदद मिलती है?</p>
-                <span class="read-more">Read More →</span>
+                <span class="read-more">Read Article →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Blog 3: Updated Comprehensive Home, Business & MSME Loans Blog -->
-        <button type="button" class="blog-card" onclick="openBlogModal('all-loans-guide')">
+        <a href="blog-all-loans-guide.html" class="blog-card">
             <img
                 class="blog-card-img"
                 src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85"
@@ -1757,12 +1466,11 @@
             <div class="blog-bottom-content">
                 <h4><span class="gold-word">Home, Business</span> और MSME लोन कैसे लें?</h4>
                 <p>घर, दुकान या बिजनेस बढ़ाने के लिए कम ब्याज पर बैंक लोन, प्रोजेक्ट रिपोर्ट और जरूरी कागजात की पूरी जानकारी।</p>
-                <span class="read-more">Read More →</span>
+                <span class="read-more">Read Article →</span>
             </div>
-        </button>
+        </a>
 
-        <!-- Blog 4 -->
-        <button type="button" class="blog-card" onclick="openBlogModal('msme-reg')">
+        <a href="blog-msme-reg.html" class="blog-card">
             <img
                 class="blog-card-img"
                 src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=85"
@@ -1777,9 +1485,9 @@
             <div class="blog-bottom-content">
                 <h4><span class="gold-word">MSME</span> रजिस्ट्रेशन के फायदे</h4>
                 <p>छोटे कारोबारियों के लिए सरकारी योजनाओं का लाभ उठाने का सबसे आसान तरीका।</p>
-                <span class="read-more">Read More →</span>
+                <span class="read-more">Read Article →</span>
             </div>
-        </button>
+        </a>
     </div>
 
     <!-- 6. WHY CHOOSE US 4-COLUMN TRUST STRIP -->
@@ -1858,19 +1566,19 @@
         <h3>Connect With Us</h3>
         <p>बिजोलिया में सभी टैक्स और वित्तीय अपडेट्स के लिए हमसे जुड़ें</p>
         <div class="social-links">
-            <a href="https://facebook.com" class="fb" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+            <a href="https://facebook.com" class="fb" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-            <a href="https://wa.me/917737740207" class="wa" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+            <a href="https://wa.me/917737740207" class="wa" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
             </a>
-            <a href="https://instagram.com" class="insta" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+            <a href="https://instagram.com" class="insta" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
-            <a href="https://youtube.com" class="yt" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+            <a href="https://youtube.com" class="yt" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48L15.5 11.75l-5.75 3.27z"/></svg>
             </a>
-            <a href="https://linkedin.com" class="linkedin" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+            <a href="https://linkedin.com" class="linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
         </div>
@@ -1888,232 +1596,25 @@
         </div>
 
         <div class="footer-links">
-            <button type="button" onclick="openServiceModal('gst')">GST Services</button>
-            <button type="button" onclick="openServiceModal('itr')">ITR Filing</button>
-            <button type="button" onclick="openServiceModal('loan')">Loans</button>
-            <button type="button" onclick="openServiceModal('emitra')">E-Mitra</button>
-            <button type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+            <a href="service-gst.html">GST Page</a>
+            <a href="service-itr.html">ITR Page</a>
+            <a href="service-loan.html">Loan Page</a>
+            <a href="service-emitra.html">E-Mitra Page</a>
+            <a href="service-company.html">MSME Page</a>
+            <a href="service-electricity.html">Electricity Page</a>
         </div>
         <p style="margin-top: 22px; font-size: 11.5px; color: #94a3b8;">© 2026 Jain Accounting &amp; Book-Keeping, Bijoliya. All Rights Reserved.</p>
     </footer>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20have%20a%20query." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20have%20a%20query." class="float-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
     </a>
-
-    <!-- INTERACTIVE MODAL POPUP FOR SERVICES & BLOGS -->
-    <div class="modal-overlay" id="infoModal" onclick="closeModalOnBackdrop(event)">
-        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-                <h3 id="modalTitle">Service Details</h3>
-                <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
-            </div>
-            <div class="modal-body" id="modalContent"></div>
-            <div class="modal-footer">
-                <a href="tel:+917737740207" style="background: var(--gold); color: #0f172a;">📞 Call Expert</a>
-                <a id="modalWaBtn" href="https://wa.me/917737740207" target="_blank" rel="noopener" style="background: var(--green); color: #ffffff;">💬 WhatsApp Now</a>
-            </div>
-        </div>
-    </div>
 
     <!-- TOAST NOTIFICATION -->
     <div class="toast-msg" id="toastMsg">Redirecting to WhatsApp...</div>
 
-    <!-- JAVASCRIPT FOR INTERACTIVE MODALS & WHATSAPP INQUIRY -->
     <script>
-        const servicesData = {
-            gst: {
-                title: "🧾 GST Registration & Returns",
-                desc: "नए व्यापार के लिए नया GST रजिस्ट्रेशन, नियमित GSTR-1, GSTR-3B रिटर्न फाइलिंग, GST संशोधन (Amendment), और वार्षिक रिटर्न (GSTR-9) की संपूर्ण सुविधा।",
-                listTitle: "आवश्यक दस्तावेज़ (Required Documents):",
-                items: [
-                    "आवेदक का आधार कार्ड और पैन कार्ड (Aadhaar & PAN Card)",
-                    "पासपोर्ट साइज फोटो (Passport Size Photo)",
-                    "व्यापार स्थल का बिजली बिल / किरायानामा (Electricity Bill / Rent Agreement)",
-                    "बैंक पासबुक या कैंसिल चेक (Bank Passbook / Cancelled Cheque)"
-                ],
-                waText: "Hello Jain Accounting, I need help with GST Registration / Return Filing."
-            },
-            itr: {
-                title: "💰 Income Tax Return (ITR) & Accounting",
-                desc: "नौकरीपेशा (Salaried), व्यापारियों (Business), और प्रोफेशनल्स के लिए सटीक इनकम टैक्स रिटर्न फाइलिंग, TDS रिफंड क्लेम, बैलेंस शीट और प्रॉफिट एंड लॉस अकाउंट तैयार करना।",
-                listTitle: "आवश्यक दस्तावेज़ (Required Documents):",
-                items: [
-                    "पैन कार्ड और आधार कार्ड (PAN & Aadhaar)",
-                    "सभी बैंक खातों का वार्षिक स्टेटमेंट (Bank Statements)",
-                    "Form-16 / सैलरी स्लिप (नौकरीपेशा व्यक्तियों के लिए)",
-                    "निवेश और बीमा (LIC, PPF, Home Loan) की रसीदें"
-                ],
-                waText: "Hello Jain Accounting, I want to file my Income Tax Return (ITR)."
-            },
-            loan: {
-                title: "🏠 Home & Business Loans",
-                desc: "बिजोलिया और आसपास के क्षेत्र में सभी प्रमुख बैंकों से होम लोन, बिजनेस लोन, प्रधानमंत्री मुद्रा लोन, पर्सनल लोन और प्रोजेक्ट रिपोर्ट (CMA Data) तैयार करने की सुविधा।",
-                listTitle: "आवश्यक दस्तावेज़ (Required Documents):",
-                items: [
-                    "आधार कार्ड, पैन कार्ड और फोटो (KYC Documents)",
-                    "पिछले 2-3 वर्षों का ITR और बैंक स्टेटमेंट",
-                    "बिजनेस रजिस्ट्रेशन प्रूफ / शॉप एक्ट / GST सर्टिफिकेट",
-                    "प्रॉपर्टी के कागजात (होम लोन या मॉर्गेज लोन हेतु)"
-                ],
-                waText: "Hello Jain Accounting, I want to inquire about Home / Business Loan services."
-            },
-            emitra: {
-                title: "💻 E-Mitra & Online Forms",
-                desc: "सभी सरकारी और गैर-सरकारी ऑनलाइन फॉर्म, मूल निवास, जाति प्रमाण पत्र, जनाधार अपडेट, राशन कार्ड, पैन कार्ड आवेदन, और डिजिटल सेवाएं एक ही छत के नीचे।",
-                listTitle: "प्रमुख ई-मित्र सेवाएं:",
-                items: [
-                    "नया पैन कार्ड (New PAN Card) और सुधार (Correction)",
-                    "जाति प्रमाण पत्र, मूल निवास और EWS प्रमाण पत्र",
-                    "जनाधार कार्ड (Jan Aadhaar) में नाम जोड़ना व सुधार",
-                    "पेंशन सत्यापन, छात्रवृत्ति और सरकारी नौकरी फॉर्म"
-                ],
-                waText: "Hello Jain Accounting, I need E-Mitra / Online form services."
-            },
-            company: {
-                title: "🏢 Company / MSME Registration",
-                desc: "अपने व्यापार को कानूनी पहचान दिलाएं। प्राइवेट लिमिटेड कंपनी, पार्टनरशिप फर्म, फूड लाइसेंस (FSSAI), और MSME उद्यम रजिस्ट्रेशन की त्वरित सेवा।",
-                listTitle: "आवश्यक दस्तावेज़ (Required Documents):",
-                items: [
-                    "सभी डायरेक्टर्स / पार्टनर्स के आधार व पैन कार्ड",
-                    "फर्म का नाम और व्यापार की प्रकृति का विवरण",
-                    "ऑफिस/दुकान के पते का प्रमाण (बिजली बिल / NOC)",
-                    "बैंक खाता विवरण और मोबाइल नंबर"
-                ],
-                waText: "Hello Jain Accounting, I want to register my Company / MSME."
-            },
-            electricity: {
-                title: "⚡ Electricity Dept. Works (AVVNL)",
-                desc: "बिजली विभाग से संबंधित सभी कार्यों जैसे नया घरेलू व कमर्शियल कनेक्शन, नाम परिवर्तन, लोड बढ़वाना/घटवाना, और बिल सुधार हेतु संपूर्ण ऑनलाइन सहायता।",
-                listTitle: "उपलब्ध सेवाएं एवं दस्तावेज़:",
-                items: [
-                    "नया बिजली कनेक्शन आवेदन (Domestic & Commercial)",
-                    "बिजली बिल में नाम ट्रांसफर (Name Change)",
-                    "स्वीकृत भार (Load Extension / Reduction) आवेदन",
-                    "आवश्यक दस्तावेज़: आधार कार्ड, रजिस्ट्री/पट्टा और पुराना बिल"
-                ],
-                waText: "Hello Jain Accounting, I need help with Electricity Department work."
-            }
-        };
-
-        const blogsData = {
-            'gst-dates': {
-                title: "📰 GST रिटर्न की नई तारीखें (2026)",
-                content: `
-                    <p><strong>समय पर GST रिटर्न भरना क्यों ज़रूरी है?</strong><br>
-                    यदि आप एक पंजीकृत व्यापारी हैं, तो समय पर अपना GST रिटर्न दाखिल करना अनिवार्य है। देरी करने पर प्रतिदिन ₹50 (या निल रिटर्न पर ₹20) की लेट फीस और 18% वार्षिक ब्याज लगता है।</p>
-                    <div class="modal-list-title">प्रमुख मासिक एवं त्रैमासिक तारीखें:</div>
-                    <ul class="modal-list">
-                        <li><strong>GSTR-1 (मासिक):</strong> हर महीने की 11 तारीख तक बिक्री का विवरण।</li>
-                        <li><strong>GSTR-3B (मासिक):</strong> हर महीने की 20 तारीख तक टैक्स भुगतान व रिटर्न।</li>
-                        <li><strong>QRMP स्कीम (त्रैमासिक):</strong> तिमाही समाप्त होने के बाद 13 और 22/24 तारीख।</li>
-                        <li><strong>GSTR-9 (वार्षिक रिटर्न):</strong> वित्तीय वर्ष समाप्त होने के बाद 31 दिसंबर तक।</li>
-                    </ul>
-                    <p>बिना किसी टेंशन और पेनल्टी से बचने के लिए आज ही <strong>Jain Accounting & Book-Keeping, Bijoliya</strong> से अपना GST अकाउंट मैनेज करवाएं।</p>
-                `,
-                waText: "Hello Jain Accounting, I read your GST blog and need assistance with GST filing."
-            },
-            'itr-benefits': {
-                title: "📊 ITR फाइल करने के 5 बड़े फायदे",
-                content: `
-                    <p>बहुत से लोग सोचते हैं कि यदि उनकी आय टैक्स स्लैब से कम है तो उन्हें ITR भरने की ज़रूरत नहीं है, लेकिन ITR फाइल करना आपकी वित्तीय पहचान का सबसे बड़ा प्रमाण है।</p>
-                    <div class="modal-list-title">ITR फाइलिंग के 5 मुख्य लाभ:</div>
-                    <ul class="modal-list">
-                        <li><strong>1. आसान बैंक लोन:</strong> होम लोन, कार लोन या बिजनेस लोन के लिए बैंक पिछले 3 साल का ITR मांगते हैं।</li>
-                        <li><strong>2. TDS रिफंड क्लेम:</strong> बैंक FD या अन्य पेमेंट पर कटे हुए TDS को वापस पाने के लिए ITR ज़रूरी है।</li>
-                        <li><strong>3. आय का वैध प्रमाण:</strong> सरकारी टेंडर, बड़े कॉन्ट्रैक्ट और बीमा पॉलिसी के लिए ITR मान्य है।</li>
-                        <li><strong>4. वीजा प्रोसेसिंग:</strong> विदेश यात्रा (Visa) के लिए एम्बेसी द्वारा ITR की कॉपी मांगी जाती है।</li>
-                        <li><strong>5. घाटे को आगे ले जाना (Carry Forward):</strong> व्यापार में हुए नुकसान को अगले वर्षों के मुनाफे से एडजस्ट करने हेतु।</li>
-                    </ul>
-                `,
-                waText: "Hello Jain Accounting, I want to file my ITR after reading your article."
-            },
-            'all-loans-guide': {
-                title: "🏦 Home, Business और MSME लोन कैसे लें?",
-                content: `
-                    <p>घर खरीदने, मकान बनवाने या अपने व्यापार को बढ़ाने के लिए सही बैंक लोन चुनना और मजबूत <strong>प्रोजेक्ट रिपोर्ट (CMA Data)</strong> तैयार करना सबसे महत्वपूर्ण कदम है।</p>
-                    <div class="modal-list-title">उपलब्ध प्रमुख बैंक लोन एवं आवश्यक तैयारी:</div>
-                    <ul class="modal-list">
-                        <li><strong>1. होम लोन व प्रॉपर्टी लोन (Home &amp; Mortgage Loan):</strong> नया घर लेने, प्लॉट पर निर्माण या प्रॉपर्टी पर कम ब्याज दर पर लोन की सुविधा।</li>
-                        <li><strong>2. बिजनेस लोन व CC Limit:</strong> दुकानदारों, ट्रेडर्स और फैक्ट्रियों के लिए वर्किंग कैपिटल, कैश क्रेडिट (CC) और टर्म लोन।</li>
-                        <li><strong>3. MSME एवं सरकारी सब्सिडी लोन:</strong> प्रधानमंत्री मुद्रा योजना (PMMY), PMEGP और राजस्थानी उद्यम योजनाओं के तहत सब्सिडी लोन।</li>
-                        <li><strong>4. आवश्यक दस्तावेज़:</strong> पिछले 2-3 साल का ITR, बैंक स्टेटमेंट, आधार-पैन, GST/MSME सर्टिफिकेट और CA द्वारा प्रमाणित प्रोजेक्ट रिपोर्ट।</li>
-                    </ul>
-                    <p>सही बैंक चयन, प्रोजेक्ट रिपोर्ट और लोन फाइल अप्रूवल में पूरी सहायता के लिए आज ही <strong>Jain Accounting &amp; Book-Keeping, Bijoliya</strong> से संपर्क करें।</p>
-                `,
-                waText: "Hello Jain Accounting, I want guidance for Home / Business / MSME Loan and Project Report."
-            },
-            'msme-reg': {
-                title: "🏢 MSME रजिस्ट्रेशन के फायदे",
-                content: `
-                    <p>सूक्ष्म, लघु और मध्यम उद्यम (MSME / Udyam Registration) भारत सरकार की एक निशुल्क और अत्यंत लाभकारी योजना है जो हर छोटे-बड़े व्यापारी के लिए आवश्यक है।</p>
-                    <div class="modal-list-title">MSME सर्टिफिकेट के प्रमुख लाभ:</div>
-                    <ul class="modal-list">
-                        <li><strong>सस्ती ब्याज दरों पर लोन:</strong> बैंकों से कम ब्याज पर बिजनेस लोन और सब्सिडी का लाभ।</li>
-                        <li><strong>पेमेंट सुरक्षा कानून:</strong> खरीदार द्वारा 45 दिनों के भीतर पेमेंट न करने पर ब्याज सहित वसूली का अधिकार।</li>
-                        <li><strong>सरकारी टेंडर में छूट:</strong> टेंडर फीस और EMD (Security Deposit) में विशेष छूट।</li>
-                        <li><strong>बिजली बिल व ISO सर्टिफिकेशन में सब्सिडी:</strong> सरकारी योजनाओं का सीधा लाभ।</li>
-                    </ul>
-                `,
-                waText: "Hello Jain Accounting, I want to get MSME Registration done."
-            }
-        };
-
-        const modal = document.getElementById('infoModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalContent');
-        const modalWaBtn = document.getElementById('modalWaBtn');
-
-        function openServiceModal(key) {
-            const data = servicesData[key];
-            if (!data) return;
-
-            modalTitle.textContent = data.title;
-            const listItemsHtml = data.items.map(item => `<li>✓ ${item}</li>`).join('');
-            modalContent.innerHTML = `
-                <p>${data.desc}</p>
-                <div class="modal-list-title">${data.listTitle}</div>
-                <ul class="modal-list">${listItemsHtml}</ul>
-                <p style="font-size: 12.5px; color: #475569; background: #eff6ff; padding: 10px 12px; border-radius: 10px; border: 1px solid #bfdbfe;">
-                    📍 <strong>ऑफिस पता:</strong> जैन अकाउंटिंग एंड बुक-कीपिंग, बिजोलिया (राजस्थान)
-                </p>
-            `;
-            modalWaBtn.href = `https://wa.me/917737740207?text=${encodeURIComponent(data.waText)}`;
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function openBlogModal(key) {
-            const blog = blogsData[key];
-            if (!blog) return;
-
-            modalTitle.textContent = blog.title;
-            modalContent.innerHTML = blog.content;
-            modalWaBtn.href = `https://wa.me/917737740207?text=${encodeURIComponent(blog.waText)}`;
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeModalOnBackdrop(event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-
         function showToast(text) {
             const toast = document.getElementById('toastMsg');
             toast.textContent = text;
@@ -2140,7 +1641,6 @@
             const service = serviceInput.value;
             const note = noteInput ? noteInput.value.trim() : '';
 
-            // 1. Inline validation (zero browser alert() calls)
             if (name.length < 2) {
                 feedbackBox.className = 'inquiry-feedback error';
                 feedbackBox.textContent = '⚠️ कृपया अपना सही नाम दर्ज करें (Please enter your name).';
@@ -2155,7 +1655,6 @@
                 return;
             }
 
-            // 2. Construct properly encoded WhatsApp API link
             let whatsappMessage =
                 `नमस्ते Jain Accounting & Book-Keeping,\n\n` +
                 `👤 *Name:* ${name}\n` +
@@ -2168,7 +1667,6 @@
 
             const waUrl = `https://api.whatsapp.com/send?phone=917737740207&text=${encodeURIComponent(whatsappMessage)}`;
 
-            // 3. Display instant green confirmation banner + direct clickable backup button
             feedbackBox.className = 'inquiry-feedback success';
             feedbackBox.innerHTML =
                 `✅ आपकी जानकारी तैयार है! WhatsApp खुल रहा है...<br>` +
@@ -2176,7 +1674,6 @@
 
             showToast('Opening WhatsApp...');
 
-            // 4. Synchronous user-gesture anchor click + iframe/popup fallback
             try {
                 const tempLink = document.createElement('a');
                 tempLink.href = waUrl;
