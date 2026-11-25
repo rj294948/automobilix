@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- GLOBAL & THEME --- */
+        /* --- GLOBAL & THEME RESET (100% Immediately Visible, Zero Hidden Opacity) --- */
         * { 
             margin: 0; 
             padding: 0; 
@@ -22,8 +22,8 @@
         }
 
         body { 
-            background-color: #f8fafc; 
-            color: #1e293b; 
+            background-color: #f1f5f9; 
+            color: #0f172a; 
             line-height: 1.6; 
             overflow-x: hidden;
         }
@@ -32,78 +32,69 @@
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
         
         :root { 
+            --navy-dark: #0f172a;
             --header-blue: #1e3a8a; 
             --header-blue-light: #2563eb;
             --gold: #f59e0b; 
+            --gold-bright: #fde047;
             --pink: #ec4899;
             --green: #25D366;
             --white: #ffffff;
             --text-dark: #0f172a;
-            --text-light: #475569;
-            --card-border: #e2e8f0;
+            --text-muted: #475569;
+            --card-border: #cbd5e1;
         }
 
-        /* --- TEXT HIGHLIGHT STYLES (Inline-safe) --- */
+        /* --- TEXT HIGHLIGHT ACCENTS --- */
+        .hero-accent-gold {
+            background: rgba(251, 191, 36, 0.24);
+            color: #fde047;
+            border-bottom: 2px solid #f59e0b;
+            padding: 0 6px;
+            border-radius: 5px;
+            font-weight: 800;
+        }
+        .hero-accent-pink {
+            background: rgba(244, 114, 182, 0.24);
+            color: #fbcfe8;
+            border-bottom: 2px solid #f472b6;
+            padding: 0 6px;
+            border-radius: 5px;
+            font-weight: 800;
+        }
         .highlight-yellow {
             background: linear-gradient(120deg, #fef08a 0%, #fef08a 100%);
             background-repeat: no-repeat;
-            background-size: 100% 44%;
+            background-size: 100% 45%;
             background-position: 0 85%;
-            padding: 0 3px;
+            padding: 0 4px;
             border-radius: 3px;
             font-weight: 800;
             color: #1e3a8a;
         }
-        header .highlight-yellow,
-        footer .highlight-yellow {
-            background: rgba(251, 191, 36, 0.24);
-            color: #fde047;
-            border-radius: 4px;
-            padding: 1px 5px;
-        }
         .highlight-pink {
             background: linear-gradient(120deg, #fbcfe8 0%, #fbcfe8 100%);
             background-repeat: no-repeat;
-            background-size: 100% 44%;
+            background-size: 100% 45%;
             background-position: 0 85%;
-            padding: 0 3px;
+            padding: 0 4px;
             border-radius: 3px;
             font-weight: 800;
             color: #9d174d;
         }
-        .highlight-gold {
-            background: linear-gradient(120deg, #fde68a 0%, #fde68a 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 44%;
-            background-position: 0 85%;
-            padding: 0 3px;
-            border-radius: 3px;
-            font-weight: 800;
-            color: #92400e;
-        }
-        .highlight-blue {
-            background: linear-gradient(120deg, #bfdbfe 0%, #bfdbfe 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 44%;
-            background-position: 0 85%;
-            padding: 0 3px;
-            border-radius: 3px;
-            font-weight: 800;
-            color: #1e40af;
-        }
 
-        /* --- SCROLL ANIMATION --- */
-        .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-        /* --- HEADER (Sticky Header with Crisp Corporate Finance Photo & Dark Navy Overlay) --- */
+        /* --- 1. STICKY TOP HEADER WITH CRISP FINANCE BACKGROUND PHOTO --- */
         header { 
-            position: sticky; top: 0; z-index: 900; 
-            background: linear-gradient(135deg, #0f172a, #1e3a8a); 
-            padding: 13px 18px; 
-            display: flex; justify-content: space-between; align-items: center; 
-            box-shadow: 0 6px 22px rgba(15, 23, 42, 0.34);
-            border-bottom: 1px solid rgba(251, 191, 36, 0.35);
+            position: sticky; 
+            top: 0; 
+            z-index: 950; 
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 58, 138, 0.92)); 
+            padding: 12px 18px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 6px 24px rgba(15, 23, 42, 0.35);
+            border-bottom: 1.5px solid rgba(251, 191, 36, 0.4);
             overflow: hidden;
         }
         .header-bg-img {
@@ -112,80 +103,104 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 35%;
+            object-position: center;
             z-index: 0;
             pointer-events: none;
         }
         .header-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, rgba(15, 23, 42, 0.80) 0%, rgba(30, 58, 138, 0.72) 55%, rgba(15, 23, 42, 0.82) 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 58, 138, 0.84));
             z-index: 1;
             pointer-events: none;
         }
         .logo { 
-            display: flex; align-items: center; gap: 11px; 
-            position: relative; z-index: 2;
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            position: relative; 
+            z-index: 2;
         }
         .logo-icon { 
-            width: 46px; height: 46px; 
+            width: 48px; 
+            height: 48px; 
             background: linear-gradient(145deg, #fde047, #f59e0b); 
             border: 2px solid #fef9c3;
-            border-radius: 12px; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            border-radius: 13px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
             color: var(--header-blue);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.5);
             flex-shrink: 0;
         }
         .logo-icon-ca {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 800;
             letter-spacing: 0.5px;
             line-height: 1;
-            color: var(--header-blue);
+            color: #0f172a;
         }
         .logo-icon-bars {
             display: flex;
             align-items: flex-end;
-            gap: 2.5px;
+            gap: 3px;
             height: 7px;
-            margin-top: 2px;
+            margin-top: 3px;
         }
         .logo-icon-bars span {
             width: 3px;
-            background: var(--header-blue);
+            background: #1e3a8a;
             border-radius: 1px;
         }
         .logo-text h2 { 
-            font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.5px; line-height: 1.2; 
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+            font-size: 16px; 
+            font-weight: 800; 
+            color: #ffffff; 
+            letter-spacing: 0.5px; 
+            line-height: 1.2; 
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
         .logo-text span { 
-            font-size: 10px; color: #fde047; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; display: block; margin-top: 2px; 
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            font-size: 10.5px; 
+            color: #fde047; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.8px; 
+            display: block; 
+            margin-top: 2px; 
         }
         
         .header-call { 
-            position: relative; z-index: 2;
+            position: relative; 
+            z-index: 2;
             background: linear-gradient(135deg, #fde047, #f59e0b); 
-            color: #0f172a; padding: 9px 16px; border-radius: 50px; 
-            font-weight: 800; font-size: 13px; 
+            color: #0f172a; 
+            padding: 9px 18px; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            font-size: 13.5px; 
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-            border: 1px solid #fef9c3;
-            display: flex; align-items: center; gap: 6px;
+            border: 1.5px solid #fef9c3;
+            display: inline-flex; 
+            align-items: center; 
+            gap: 6px;
             white-space: nowrap;
-            transition: transform 0.2s;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .header-call:hover { transform: scale(1.04); }
+        .header-call:hover { 
+            transform: translateY(-1px) scale(1.03); 
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
 
-        /* --- HERO SECTION WITH SHARP, CLEAR HD ACCOUNTING WORKSPACE PHOTO --- */
+        /* --- 2. HERO SECTION WITH FULL-BLEED ACCOUNTING OFFICE PHOTO --- */
         .hero { 
-            padding: 58px 20px 70px; 
+            padding: 58px 20px 76px; 
             text-align: center; 
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
-            border-bottom: 1px solid #cbd5e1;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
         }
         .hero-bg-img {
             position: absolute;
@@ -196,188 +211,188 @@
             object-position: center;
             z-index: 0;
             pointer-events: none;
-            filter: contrast(1.05) saturate(1.08);
         }
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(239, 246, 255, 0.80) 60%, rgba(248, 250, 252, 0.92) 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(30, 58, 138, 0.80) 100%);
             pointer-events: none;
             z-index: 1;
         }
         .hero-inner {
             position: relative;
             z-index: 2;
-            max-width: 740px;
+            max-width: 780px;
             margin: 0 auto;
         }
         .hero-badge {
             display: inline-block; 
-            background: rgba(254, 243, 199, 0.98); border: 1.5px solid #f59e0b;
-            padding: 6px 16px; border-radius: 50px; font-size: 12px; 
-            color: #92400e; font-weight: 800; margin-bottom: 18px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+            background: rgba(15, 23, 42, 0.72); 
+            border: 1.5px solid #fbbf24;
+            padding: 7px 18px; 
+            border-radius: 50px; 
+            font-size: 12.5px; 
+            color: #fde047; 
+            font-weight: 800; 
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+            letter-spacing: 0.3px;
         }
         .hero h1 { 
-            font-size: 31px; font-weight: 800; line-height: 1.25; margin-bottom: 14px; 
-            color: #0f172a;
-            text-shadow: 0 2px 12px rgba(255, 255, 255, 0.98), 0 1px 2px rgba(255, 255, 255, 1);
+            font-size: 32px; 
+            font-weight: 800; 
+            line-height: 1.25; 
+            margin-bottom: 16px; 
+            color: #ffffff;
+            text-shadow: 0 3px 14px rgba(0, 0, 0, 0.55);
         }
         .hero p { 
-            font-size: 14.5px; color: #0f172a; font-weight: 600; margin-bottom: 28px; max-width: 94%; margin-left: auto; margin-right: auto; 
-            background: rgba(255, 255, 255, 0.65);
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+            font-size: 15px; 
+            color: #f1f5f9; 
+            font-weight: 500; 
+            margin-bottom: 30px; 
+            max-width: 640px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
-        .logo { display: flex; align-items: center; gap: 11px; }
-        .logo-icon { 
-            width: 46px; height: 46px; 
-            background: linear-gradient(145deg, #fde047, #f59e0b); 
-            border: 2px solid #fef9c3;
-            border-radius: 12px; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            color: var(--header-blue);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.45);
-            flex-shrink: 0;
-        }
-        .logo-icon-ca {
-            font-size: 17px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            line-height: 1;
-            color: var(--header-blue);
-        }
-        .logo-icon-bars {
-            display: flex;
-            align-items: flex-end;
-            gap: 2.5px;
-            height: 7px;
-            margin-top: 2px;
-        }
-        .logo-icon-bars span {
-            width: 3px;
-            background: var(--header-blue);
-            border-radius: 1px;
-        }
-        .logo-text h2 { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.5px; line-height: 1.2; }
-        .logo-text span { font-size: 10px; color: #fde68a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; display: block; margin-top: 2px; }
         
-        .header-call { 
-            background: var(--gold); 
-            color: var(--header-blue); padding: 9px 16px; border-radius: 50px; 
-            font-weight: 800; font-size: 13px; 
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            display: flex; align-items: center; gap: 6px;
-            white-space: nowrap;
-            transition: transform 0.2s;
+        .hero-btns { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 14px; 
+            max-width: 380px; 
+            margin: 0 auto; 
         }
-        .header-call:hover { transform: scale(1.04); }
-
-        /* --- HERO SECTION WITH REAL HD PHOTOGRAPHIC BACKGROUND --- */
-        .hero { 
-            padding: 56px 20px 68px; 
-            text-align: center; 
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
-            border-bottom: 1px solid #cbd5e1;
-        }
-        .hero-bg-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(239, 246, 255, 0.86) 0%, rgba(255, 255, 255, 0.90) 65%, rgba(248, 250, 252, 0.96) 100%);
-            backdrop-filter: blur(2px);
-            pointer-events: none;
-            z-index: 1;
-        }
-        .hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 740px;
-            margin: 0 auto;
-        }
-        .hero-badge {
-            display: inline-block; 
-            background: rgba(254, 243, 199, 0.96); border: 1px solid #fcd34d;
-            padding: 6px 16px; border-radius: 50px; font-size: 12px; 
-            color: #92400e; font-weight: 700; margin-bottom: 18px;
-            box-shadow: 0 2px 10px rgba(245, 158, 11, 0.18);
-        }
-        .hero h1 { 
-            font-size: 31px; font-weight: 800; line-height: 1.25; margin-bottom: 14px; 
-            color: var(--header-blue);
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
-        }
-        .hero p { font-size: 14.5px; color: #1e293b; font-weight: 500; margin-bottom: 28px; max-width: 94%; margin-left: auto; margin-right: auto; }
-        
-        .hero-btns { display: flex; flex-direction: column; gap: 14px; max-width: 360px; margin: 0 auto; }
         .btn { 
-            padding: 14px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; 
-            text-align: center; transition: 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .btn-call { background: var(--gold); color: var(--header-blue); box-shadow: 0 4px 20px rgba(245, 158, 11, 0.34); }
-        .btn-call:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(245, 158, 11, 0.45); }
-        .btn-wa { background: var(--green); color: white; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.34); }
-        .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
-
-        /* --- STATS BAR --- */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: var(--white); border: 1.5px solid var(--card-border);
-            border-radius: 20px; padding: 22px 10px; 
-            margin: -30px 14px 44px; position: relative; z-index: 10;
-            box-shadow: 0 12px 32px rgba(30, 58, 138, 0.1);
+            padding: 15px 24px; 
+            border-radius: 14px; 
+            font-weight: 800; 
+            font-size: 15.5px; 
+            text-align: center; 
+            transition: transform 0.25s ease, box-shadow 0.25s ease; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
             gap: 8px;
         }
-        .stat-item { text-align: center; border-right: 1px solid #e2e8f0; padding: 4px 2px; }
-        .stat-item:last-child { border-right: none; }
-        .stat-item h3 { font-size: 22px; color: var(--header-blue); font-weight: 800; line-height: 1.2; }
-        .stat-item p { font-size: 10.5px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 700; margin-top: 4px; }
+        .btn-call { 
+            background: linear-gradient(135deg, #fde047, #f59e0b); 
+            color: #0f172a; 
+            border: 1.5px solid #fef9c3;
+            box-shadow: 0 6px 22px rgba(245, 158, 11, 0.45); 
+        }
+        .btn-call:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 28px rgba(245, 158, 11, 0.55); 
+        }
+        .btn-wa { 
+            background: linear-gradient(135deg, #22c55e, #16a34a); 
+            color: #ffffff; 
+            border: 1.5px solid #86efac;
+            box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4); 
+        }
+        .btn-wa:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.52); 
+        }
 
-        /* --- SECTION TITLES --- */
-        .section-header { text-align: center; margin: 44px 0 28px; padding: 0 16px; }
-        .section-header h2 { font-size: 26px; font-weight: 800; color: var(--header-blue); }
-        .section-header p { font-size: 13px; color: var(--text-light); margin-top: 5px; }
-        .section-header .line { width: 60px; height: 4px; background: linear-gradient(to right, var(--gold), var(--pink)); margin: 12px auto 0; border-radius: 5px; }
+        /* --- 3. FLOATING STATS BAR --- */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background: #ffffff; 
+            border: 1.5px solid #cbd5e1;
+            border-radius: 22px; 
+            padding: 20px 14px; 
+            margin: -38px 16px 48px; 
+            position: relative; 
+            z-index: 10;
+            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+            gap: 14px;
+        }
+        .stat-item { 
+            text-align: center; 
+            padding: 8px 6px; 
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+        }
+        .stat-item h3 { 
+            font-size: 24px; 
+            color: var(--header-blue); 
+            font-weight: 800; 
+            line-height: 1.2; 
+        }
+        .stat-item p { 
+            font-size: 11px; 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            font-weight: 700; 
+            margin-top: 4px; 
+        }
 
-        /* --- SERVICES GRID (Always 3 Columns, Real Photographic Backgrounds, Clean Natural Text Flow) --- */
+        /* --- SECTION HEADERS --- */
+        .section-header { 
+            text-align: center; 
+            margin: 44px 0 30px; 
+            padding: 0 18px; 
+        }
+        .section-header h2 { 
+            font-size: 27px; 
+            font-weight: 800; 
+            color: var(--header-blue); 
+            line-height: 1.25;
+        }
+        .section-header p { 
+            font-size: 13.5px; 
+            color: var(--text-muted); 
+            margin-top: 6px; 
+            font-weight: 500;
+        }
+        .section-header .line { 
+            width: 64px; 
+            height: 4px; 
+            background: linear-gradient(to right, var(--gold), var(--pink)); 
+            margin: 12px auto 0; 
+            border-radius: 5px; 
+        }
+
+        /* --- 4. OUR CA SERVICES SECTION (2 Cols Mobile, 3 Cols Desktop, Full-Bleed Crisp Photos + Bottom Gradient) --- */
         .services-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px; 
-            padding: 0 14px; 
-            margin-bottom: 56px; 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px; 
+            padding: 0 16px; 
+            margin-bottom: 60px; 
             align-items: stretch;
         }
         .service-card { 
-            border-radius: 18px; 
-            padding: 16px 8px 14px; 
-            text-align: center; 
-            transition: all 0.25s ease; 
+            border-radius: 20px; 
+            padding: 16px 14px 16px; 
+            text-align: left; 
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease; 
             position: relative; 
             overflow: hidden;
             display: flex; 
             flex-direction: column; 
-            align-items: center; 
             justify-content: space-between;
-            min-height: 178px;
+            min-height: 225px;
             cursor: pointer;
-            background-color: #ffffff;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
         }
-        .card-photo {
+
+        /* Rich CSS Gradient Fallbacks per Service */
+        .fallback-gst { background: linear-gradient(135deg, #1e3a8a 0%, #b45309 100%); }
+        .fallback-itr { background: linear-gradient(135deg, #311042 0%, #9d174d 100%); }
+        .fallback-loan { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
+        .fallback-emitra { background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%); }
+        .fallback-company { background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%); }
+        .fallback-electricity { background: linear-gradient(135deg, #431407 0%, #c2410c 100%); }
+
+        .service-card-img {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -386,408 +401,440 @@
             object-position: center;
             z-index: 0;
             pointer-events: none;
-            transition: transform 0.4s ease;
+            transition: transform 0.45s ease;
         }
-        .service-card:hover .card-photo,
-        .blog-card:hover .card-photo {
-            transform: scale(1.07);
+        .service-card:hover .service-card-img {
+            transform: scale(1.08);
         }
-        .card-glass-overlay {
+        /* Smooth bottom dark gradient: upper half reveals the HD photo clearly, lower half gives crisp contrast */
+        .service-card-overlay {
             position: absolute;
             inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.12) 0%, rgba(15, 23, 42, 0.55) 48%, rgba(15, 23, 42, 0.94) 100%);
             z-index: 1;
             pointer-events: none;
-            backdrop-filter: blur(1px);
         }
-
-        /* Service Theme 1: GST (Warm Amber-Gold Glass Tint) */
-        .theme-gst { border: 1.5px solid #f59e0b; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.16); background: linear-gradient(155deg, #fffbeb, #fef3c7); }
-        .theme-gst .card-glass-overlay { background: linear-gradient(180deg, rgba(255, 251, 235, 0.80) 0%, rgba(254, 243, 199, 0.90) 100%); }
-        .theme-gst .service-icon { border-color: rgba(245, 158, 11, 0.55); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.22); }
-        .theme-gst .service-tap-hint { color: #92400e; border-color: rgba(245, 158, 11, 0.5); }
-
-        /* Service Theme 2: ITR (Soft Rose-Pink Glass Tint) */
-        .theme-itr { border: 1.5px solid #ec4899; box-shadow: 0 6px 18px rgba(236, 72, 153, 0.15); background: linear-gradient(155deg, #fdf2f8, #fce7f3); }
-        .theme-itr .card-glass-overlay { background: linear-gradient(180deg, rgba(253, 242, 248, 0.82) 0%, rgba(252, 231, 243, 0.91) 100%); }
-        .theme-itr .service-icon { border-color: rgba(236, 72, 153, 0.5); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2); }
-        .theme-itr .service-tap-hint { color: #9d174d; border-color: rgba(236, 72, 153, 0.45); }
-
-        /* Service Theme 3: Loans (Sky-Blue Glass Tint) */
-        .theme-loan { border: 1.5px solid #3b82f6; box-shadow: 0 6px 18px rgba(59, 130, 246, 0.15); background: linear-gradient(155deg, #eff6ff, #dbeafe); }
-        .theme-loan .card-glass-overlay { background: linear-gradient(180deg, rgba(239, 246, 255, 0.82) 0%, rgba(219, 234, 254, 0.91) 100%); }
-        .theme-loan .service-icon { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2); }
-        .theme-loan .service-tap-hint { color: #1e40af; border-color: rgba(59, 130, 246, 0.45); }
-
-        /* Service Theme 4: E-Mitra (Emerald-Teal Glass Tint) */
-        .theme-emitra { border: 1.5px solid #10b981; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.15); background: linear-gradient(155deg, #ecfdf5, #d1fae5); }
-        .theme-emitra .card-glass-overlay { background: linear-gradient(180deg, rgba(236, 253, 245, 0.82) 0%, rgba(209, 250, 229, 0.91) 100%); }
-        .theme-emitra .service-icon { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
-        .theme-emitra .service-tap-hint { color: #065f46; border-color: rgba(16, 185, 129, 0.45); }
-
-        /* Service Theme 5: Company / MSME (Indigo-Violet Glass Tint) */
-        .theme-company { border: 1.5px solid #6366f1; box-shadow: 0 6px 18px rgba(99, 102, 241, 0.15); background: linear-gradient(155deg, #eef2ff, #e0e7ff); }
-        .theme-company .card-glass-overlay { background: linear-gradient(180deg, rgba(238, 242, 255, 0.82) 0%, rgba(224, 231, 255, 0.91) 100%); }
-        .theme-company .service-icon { border-color: rgba(99, 102, 241, 0.5); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2); }
-        .theme-company .service-tap-hint { color: #3730a3; border-color: rgba(99, 102, 241, 0.45); }
-
-        /* Service Theme 6: Electricity Dept. (Warm Saffron-Orange Glass Tint) */
-        .theme-electricity { border: 1.5px solid #f97316; box-shadow: 0 6px 18px rgba(249, 115, 22, 0.15); background: linear-gradient(155deg, #fff7ed, #ffedd5); }
-        .theme-electricity .card-glass-overlay { background: linear-gradient(180deg, rgba(255, 247, 237, 0.82) 0%, rgba(255, 237, 213, 0.91) 100%); }
-        .theme-electricity .service-icon { border-color: rgba(249, 115, 22, 0.5); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2); }
-        .theme-electricity .service-tap-hint { color: #9a3412; border-color: rgba(249, 115, 22, 0.45); }
-
-        .service-card:hover, .service-card:active { 
-            transform: translateY(-4px); 
-            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
+        .service-card:hover { 
+            transform: translateY(-5px); 
+            border-color: #fbbf24;
+            box-shadow: 0 16px 34px rgba(15, 23, 42, 0.26);
         }
-        .service-icon { 
-            font-size: 26px; 
-            margin-bottom: 10px; 
+        .service-top-row {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .service-icon-badge { 
+            font-size: 22px; 
             display: inline-flex; 
             align-items: center; 
             justify-content: center;
-            width: 50px; 
-            height: 50px; 
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.96);
-            border: 1.5px solid #cbd5e1;
-            position: relative;
-            z-index: 2;
+            width: 44px; 
+            height: 44px; 
+            border-radius: 13px;
+            background: rgba(15, 23, 42, 0.82);
+            border: 1.5px solid rgba(251, 191, 36, 0.75);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
             flex-shrink: 0;
         }
-        /* FIXED: Standard block/inline typography so spans & parentheses wrap naturally without column splitting */
+        .service-ca-pill {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #fde047;
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(253, 224, 71, 0.45);
+            padding: 3px 9px;
+            border-radius: 50px;
+        }
+        .service-bottom-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-top: auto;
+        }
+        /* Strictly display: block on h3 so inline spans/parentheses wrap naturally on mobile */
         .service-card h3 { 
             display: block;
             width: 100%;
-            font-size: 12.5px; 
-            color: #0f172a; 
+            font-size: 14px; 
+            color: #ffffff; 
             font-weight: 800; 
-            line-height: 1.38; 
+            line-height: 1.35; 
             word-break: normal;
             overflow-wrap: break-word;
-            text-align: center;
-            position: relative;
-            z-index: 2;
             margin-bottom: 10px;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
         }
-        .service-tap-hint {
+        .service-card h3 .gold-word {
+            color: #fde047;
+        }
+        .service-tap-btn {
             display: inline-block;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid #cbd5e1;
-            padding: 4px 10px;
-            border-radius: 20px;
-            position: relative;
-            z-index: 2;
-            flex-shrink: 0;
-            white-space: nowrap;
+            color: #0f172a;
+            background: linear-gradient(135deg, #fde047, #f59e0b);
+            padding: 5px 12px;
+            border-radius: 50px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+        }
+        .service-card:hover .service-tap-btn {
+            transform: translateX(2px);
         }
 
-        /* --- BLOG SECTION (2 Columns, Real HD Photographic Backgrounds, Natural Text Flow) --- */
+        /* --- 5. LATEST CA UPDATES & BLOGS (1 Col Narrow Mobile, 2 Cols Tablet/Desktop) --- */
         .blog-container { 
-            padding: 0 14px; 
-            margin-bottom: 56px; 
+            padding: 0 16px; 
+            margin-bottom: 60px; 
             display: grid; 
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             align-items: stretch;
         }
         .blog-card { 
-            background: linear-gradient(160deg, #eff6ff 0%, #dbeafe 100%);
-            border: 1.5px solid #93c5fd; 
-            border-radius: 18px; 
-            padding: 14px; 
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1; 
+            border-radius: 20px; 
+            overflow: hidden;
             display: flex; 
             flex-direction: column; 
             justify-content: space-between;
-            gap: 10px; 
-            transition: all 0.25s ease;
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
-            min-height: 235px;
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
             cursor: pointer;
             text-align: left;
-            position: relative;
-            overflow: hidden;
+            padding: 0;
         }
-        .blog-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.80) 0%, rgba(239, 246, 255, 0.92) 55%, rgba(219, 234, 254, 0.95) 100%);
-            backdrop-filter: blur(1px);
-            pointer-events: none;
-            z-index: 1;
-        }
-        .blog-card:hover, .blog-card:active { 
+        .blog-card:hover { 
             transform: translateY(-4px);
             border-color: var(--header-blue-light); 
-            box-shadow: 0 14px 28px rgba(37, 99, 235, 0.22);
+            box-shadow: 0 16px 32px rgba(30, 58, 138, 0.16);
         }
-        .blog-img-thumb { 
+        .blog-banner-wrap { 
             width: 100%; 
-            height: 76px; 
-            border-radius: 12px; 
-            flex-shrink: 0; 
+            height: 165px; 
             position: relative;
-            z-index: 2;
             overflow: hidden;
-            border: 1px solid rgba(37, 99, 235, 0.25);
-            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #dbeafe;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            flex-shrink: 0;
         }
-        .blog-img-thumb img {
+        .blog-banner-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            transition: transform 0.45s ease;
         }
-        .blog-emoji-badge {
+        .blog-card:hover .blog-banner-wrap img {
+            transform: scale(1.06);
+        }
+        .blog-banner-tag {
             position: absolute;
-            bottom: 6px;
-            right: 6px;
-            background: rgba(255, 255, 255, 0.94);
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            top: 12px;
+            left: 12px;
+            font-size: 10.5px; 
+            background: rgba(15, 23, 42, 0.85); 
+            color: #fde047; 
+            border: 1px solid rgba(253, 224, 71, 0.5);
+            padding: 4px 11px; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
         }
-        .blog-content { 
+        .blog-body { 
+            padding: 18px 18px 20px;
             flex: 1; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            position: relative;
-            z-index: 2;
             width: 100%;
         }
-        .blog-tag { 
-            font-size: 9px; background: #fce7f3; color: #be185d; 
-            padding: 3px 8px; border-radius: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px;
-            display: inline-block;
-            width: fit-content;
-            border: 1px solid #fbcfe8;
-        }
-        /* FIXED: Standard block typography for blog headlines */
-        .blog-content h4 { 
+        /* Strictly display: block on h4 for clean mobile Hindi/English line wrapping */
+        .blog-body h4 { 
             display: block;
             width: 100%;
-            font-size: 13px; 
+            font-size: 16.5px; 
             color: #0f172a; 
-            margin: 6px 0; 
+            margin-bottom: 8px; 
             font-weight: 800; 
             line-height: 1.4; 
             word-break: normal;
             overflow-wrap: break-word;
         }
-        .blog-content p { 
-            font-size: 11px; 
-            color: #334155; 
+        .blog-body p { 
+            font-size: 13px; 
+            color: #475569; 
             font-weight: 500; 
-            margin-bottom: 10px; 
-            line-height: 1.45;
+            margin-bottom: 14px; 
+            line-height: 1.5;
         }
         .read-more { 
-            font-size: 11.5px; 
+            font-size: 13px; 
             color: var(--header-blue); 
             font-weight: 800; 
             display: inline-flex; 
             align-items: center; 
-            gap: 4px; 
+            gap: 5px; 
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 6px 14px;
+            border-radius: 50px;
+            width: fit-content;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .blog-card:hover .read-more {
+            background: var(--header-blue);
+            color: #ffffff;
+            border-color: var(--header-blue);
         }
 
-        /* --- QUICK CONSULTATION / INQUIRY FORM --- */
+        /* --- 6. QUICK WHATSAPP CONSULTATION FORM --- */
         .inquiry-section {
-            padding: 0 14px;
-            margin-bottom: 52px;
+            padding: 0 16px;
+            margin-bottom: 56px;
         }
         .inquiry-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            background: #ffffff;
             border: 1.5px solid #cbd5e1;
-            border-radius: 20px;
-            padding: 24px 18px;
-            max-width: 780px;
+            border-radius: 22px;
+            padding: 26px 20px;
+            max-width: 820px;
             margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.08);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
         }
         .inquiry-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 14px;
-            margin-top: 18px;
+            gap: 16px;
+            margin-top: 10px;
         }
         .form-group label {
             display: block;
-            font-size: 12px;
+            font-size: 12.5px;
             font-weight: 700;
             color: var(--header-blue);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
         .form-control {
             width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
+            padding: 13px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
             font-size: 14px;
             color: var(--text-dark);
-            background: #ffffff;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #f8fafc;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
         .form-control:focus {
             outline: none;
+            background: #ffffff;
             border-color: var(--header-blue-light);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
         }
         .btn-submit-wa {
             width: 100%;
             background: linear-gradient(135deg, #16a34a, #25D366);
             color: #ffffff;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 15px;
+            padding: 15px;
+            border-radius: 14px;
+            font-size: 15.5px;
             font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-top: 6px;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-            transition: transform 0.2s;
+            margin-top: 4px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .btn-submit-wa:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 26px rgba(37, 211, 102, 0.45);
         }
 
-        /* --- SOCIAL LINKS --- */
+        /* --- 7. SOCIAL LINKS SECTION --- */
         .social-section {
-            text-align: center; padding: 32px 20px; 
-            background: #ffffff; border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
+            text-align: center; 
+            padding: 36px 20px; 
+            background: #ffffff; 
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .social-section h3 { font-size: 18px; color: var(--header-blue); margin-bottom: 6px; font-weight: 800; }
-        .social-section p { font-size: 12px; color: var(--text-light); margin-bottom: 18px; }
+        .social-section h3 { 
+            font-size: 20px; 
+            color: var(--header-blue); 
+            margin-bottom: 6px; 
+            font-weight: 800; 
+        }
+        .social-section p { 
+            font-size: 13px; 
+            color: var(--text-muted); 
+            margin-bottom: 20px; 
+        }
         .social-links { 
-            display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+            display: flex; 
+            justify-content: center; 
+            gap: 16px; 
+            flex-wrap: wrap;
         }
         .social-links a { 
-            width: 48px; height: 48px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            color: white; transition: 0.25s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #ffffff; 
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
         }
-        .social-links a:hover { transform: translateY(-3px) scale(1.08); }
+        .social-links a:hover { 
+            transform: translateY(-3px) scale(1.08); 
+        }
         .fb { background: #1877F2; }
         .wa { background: var(--green); }
         .insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .yt { background: #FF0000; }
         .linkedin { background: #0A66C2; }
 
-        /* --- FOOTER --- */
+        /* --- 8. FOOTER --- */
         footer { 
-            background: var(--header-blue); padding: 36px 20px 85px; text-align: center; 
+            background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%); 
+            padding: 40px 20px 90px; 
+            text-align: center; 
             color: #e2e8f0;
         }
-        footer h3 { color: #fff; font-size: 18px; margin-bottom: 8px; font-weight: 800; }
-        footer p { font-size: 13px; margin-bottom: 6px; }
+        footer h3 { 
+            color: #ffffff; 
+            font-size: 20px; 
+            margin-bottom: 8px; 
+            font-weight: 800; 
+        }
+        footer h3 span {
+            color: #fde047;
+        }
+        footer p { 
+            font-size: 13.5px; 
+            margin-bottom: 6px; 
+            color: #cbd5e1;
+        }
         .footer-contact-pills {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin: 15px 0;
+            margin: 18px 0;
         }
         .footer-pill {
             background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            padding: 8px 16px;
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 12.5px;
+            font-weight: 600;
             color: #ffffff;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            transition: background 0.2s ease;
         }
-        footer .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .footer-pill:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+        footer .footer-links { 
+            margin-top: 18px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 14px; 
+            flex-wrap: wrap; 
+        }
         footer .footer-links button { 
-            background: transparent;
+            background: rgba(253, 224, 71, 0.14);
+            border: 1px solid rgba(253, 224, 71, 0.35);
             color: #fde047; 
-            font-size: 13px; 
+            font-size: 12.5px; 
             font-weight: 700; 
-            padding: 4px 8px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            transition: background 0.2s ease;
         }
-        footer .footer-links button:hover { text-decoration: underline; }
+        footer .footer-links button:hover { 
+            background: rgba(253, 224, 71, 0.28);
+        }
 
-        /* --- FLOATING WHATSAPP BUTTON --- */
+        /* --- PULSING FLOATING WHATSAPP BUTTON --- */
         .float-wa {
-            position: fixed; bottom: 20px; right: 20px; z-index: 950;
-            background: var(--green); color: white; 
-            width: 56px; height: 56px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45);
+            position: fixed; 
+            bottom: 22px; 
+            right: 22px; 
+            z-index: 950;
+            background: var(--green); 
+            color: #ffffff; 
+            width: 58px; 
+            height: 58px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.48);
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.72); }
+            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* --- INTERACTIVE MODAL --- */
+        /* --- INTERACTIVE MODAL FOR SERVICES & BLOGS --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.72);
+            background: rgba(15, 23, 42, 0.76);
             backdrop-filter: blur(4px);
             z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
             padding: 16px;
-            opacity: 0;
-            transition: opacity 0.25s ease;
         }
         .modal-overlay.active {
             display: flex;
-            opacity: 1;
         }
         .modal-box {
             background: #ffffff;
             width: 100%;
-            max-width: 520px;
+            max-width: 540px;
             max-height: 88vh;
             border-radius: 22px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-            transform: scale(0.94);
-            transition: transform 0.25s ease;
-        }
-        .modal-overlay.active .modal-box {
-            transform: scale(1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
         }
         .modal-header {
-            background: linear-gradient(135deg, var(--header-blue), var(--header-blue-light));
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
             color: #ffffff;
             padding: 18px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
+            border-bottom: 2px solid #f59e0b;
         }
         .modal-header h3 {
             font-size: 17px;
             font-weight: 800;
-            line-height: 1.3;
+            line-height: 1.35;
         }
         .modal-close {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.18);
             color: #ffffff;
             width: 34px;
             height: 34px;
@@ -800,13 +847,13 @@
             flex-shrink: 0;
         }
         .modal-close:hover {
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.32);
         }
         .modal-body {
             padding: 20px;
             overflow-y: auto;
             font-size: 14px;
-            color: #334155;
+            color: #1e293b;
         }
         .modal-body p {
             margin-bottom: 12px;
@@ -815,35 +862,35 @@
             font-weight: 800;
             color: var(--header-blue);
             margin: 14px 0 8px;
-            font-size: 14px;
+            font-size: 14.5px;
         }
         .modal-list {
             list-style: none;
             margin-bottom: 16px;
         }
         .modal-list li {
-            padding: 7px 10px;
+            padding: 8px 12px;
             background: #f8fafc;
-            border-left: 3px solid var(--gold);
-            border-radius: 6px;
-            margin-bottom: 6px;
+            border-left: 3.5px solid var(--gold);
+            border-radius: 8px;
+            margin-bottom: 7px;
             font-size: 13px;
             font-weight: 600;
-            color: #1e293b;
+            color: #0f172a;
         }
         .modal-footer {
             padding: 14px 20px;
             background: #f8fafc;
             border-top: 1px solid #e2e8f0;
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
         .modal-footer a {
             flex: 1;
             padding: 12px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 13px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 13.5px;
             text-align: center;
             display: flex;
             align-items: center;
@@ -854,20 +901,21 @@
         /* --- CUSTOM TOAST NOTIFICATION --- */
         .toast-msg {
             position: fixed;
-            bottom: 85px;
+            bottom: 90px;
             left: 50%;
             transform: translateX(-50%) translateY(20px);
-            background: #1e293b;
-            color: #ffffff;
-            padding: 12px 20px;
+            background: #0f172a;
+            color: #fde047;
+            border: 1px solid #f59e0b;
+            padding: 12px 22px;
             border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            font-size: 13.5px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             z-index: 3000;
             opacity: 0;
             pointer-events: none;
-            transition: all 0.3s ease;
+            transition: opacity 0.25s ease, transform 0.25s ease;
             white-space: nowrap;
         }
         .toast-msg.show {
@@ -875,72 +923,87 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* --- DESKTOP RESPONSIVE --- */
-        @media (min-width: 768px) {
-            .hero { padding: 72px 20px 80px; }
-            .hero h1 { font-size: 46px; }
-            .hero p { font-size: 16px; max-width: 620px; }
-            .hero-btns { flex-direction: row; justify-content: center; max-width: 100%; gap: 18px; }
-            .btn { padding: 15px 32px; font-size: 16px; }
-            
-            .services-grid { 
-                grid-template-columns: repeat(3, 1fr); 
-                gap: 24px; 
-                max-width: 1020px; 
-                margin: 0 auto 68px; 
-                padding: 0 24px;
+        /* --- TABLET & DESKTOP RESPONSIVE BREAKPOINTS --- */
+        @media (min-width: 640px) {
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 880px;
+                margin: -40px auto 52px;
+                padding: 24px 20px;
+                gap: 16px;
             }
-            .service-card { min-height: 215px; padding: 26px 20px 22px; border-radius: 22px; }
-            .service-icon { font-size: 34px; width: 64px; height: 64px; border-radius: 18px; margin-bottom: 14px; }
-            .service-card h3 { font-size: 16px; margin-bottom: 14px; }
-            .service-tap-hint { font-size: 11.5px; padding: 5px 14px; }
-            
-            .blog-container { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 24px; 
-                max-width: 1020px; 
-                margin: 0 auto 72px; 
+            .blog-container {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 1040px;
+                margin: 0 auto 68px;
                 padding: 0 24px;
+                gap: 24px;
             }
-            .blog-card { min-height: 280px; padding: 22px; border-radius: 22px; }
-            .blog-img-thumb { height: 115px; border-radius: 14px; }
-            .blog-tag { font-size: 10px; padding: 4px 10px; }
-            .blog-content h4 { font-size: 17px; margin: 8px 0; }
-            .blog-content p { font-size: 13px; }
-            .read-more { font-size: 13.5px; }
-
             .inquiry-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .inquiry-full {
                 grid-column: span 2;
             }
-            
-            .stats-container { max-width: 860px; margin: -34px auto 50px; padding: 28px 24px; gap: 20px; }
-            .stat-item h3 { font-size: 30px; }
-            .stat-item p { font-size: 12px; }
-            .section-header h2 { font-size: 34px; }
-            .logo-text h2 { font-size: 19px; }
-            .logo-text span { font-size: 11px; }
-            footer { padding-bottom: 45px; }
         }
 
-        /* --- VERY SMALL SCREENS (< 380px) --- */
-        @media (max-width: 380px) {
-            .logo-text h2 { font-size: 13.5px; }
-            .header-call { padding: 7px 12px; font-size: 12px; }
-            .services-grid { gap: 8px; padding: 0 10px; }
-            .service-card { min-height: 168px; padding: 14px 6px 12px; }
-            .service-card h3 { font-size: 11.5px; }
-            .service-icon { font-size: 22px; width: 44px; height: 44px; margin-bottom: 8px; }
-            .service-tap-hint { font-size: 9px; padding: 3px 8px; }
-            .blog-container { gap: 10px; padding: 0 10px; }
-    <!-- 1. STICKY HEADER WITH CRISP CORPORATE FINANCE BACKGROUND IMAGE & DARK NAVY OVERLAY -->
+        @media (min-width: 768px) {
+            header { padding: 14px 32px; }
+            .logo-text h2 { font-size: 19px; }
+            .logo-text span { font-size: 11px; }
+            .hero { padding: 78px 24px 92px; }
+            .hero h1 { font-size: 46px; }
+            .hero p { font-size: 16.5px; }
+            .hero-btns { flex-direction: row; justify-content: center; max-width: 100%; gap: 18px; }
+            .btn { padding: 16px 34px; font-size: 16px; }
+            
+            .services-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 24px; 
+                max-width: 1040px; 
+                margin: 0 auto 72px; 
+                padding: 0 24px;
+            }
+            .service-card { 
+                min-height: 260px; 
+                padding: 20px 18px; 
+                border-radius: 22px; 
+            }
+            .service-icon-badge { 
+                width: 52px; 
+                height: 52px; 
+                font-size: 26px; 
+            }
+            .service-card h3 { 
+                font-size: 16.5px; 
+                margin-bottom: 12px; 
+            }
+            .service-tap-btn { 
+                font-size: 12px; 
+                padding: 6px 14px; 
+            }
+            .section-header h2 { font-size: 34px; }
+            footer { padding-bottom: 48px; }
+        }
+
+        /* --- EXTRA SMALL PHONE TUNING (< 375px) --- */
+        @media (max-width: 375px) {
+            .logo-text h2 { font-size: 14px; }
+            .header-call { padding: 8px 12px; font-size: 12px; }
+            .services-grid { gap: 10px; padding: 0 12px; }
+            .service-card { min-height: 205px; padding: 12px 10px; }
+            .service-card h3 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. STICKY TOP HEADER -->
     <header>
         <img 
             class="header-bg-img" 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85" 
-            alt="Corporate Finance and Accounting Skyline Header"
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85" 
+            alt="Corporate Finance and Accounting Header"
             onerror="this.style.display='none'"
         >
         <div class="header-overlay"></div>
@@ -962,20 +1025,20 @@
         <a href="tel:+917737740207" class="header-call">📞 Call Now</a>
     </header>
 
-    <!-- 2. HERO SECTION WITH SHARP, CLEAR HD FINANCIAL ACCOUNTING WORKSPACE PHOTO -->
-    <section class="hero fade-up">
+    <!-- 2. HERO SECTION -->
+    <section class="hero">
         <img 
             class="hero-bg-img" 
-            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85" 
-            alt="Financial Accounting and Tax Consultation Workspace"
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85" 
+            alt="Accounting and Financial Office Workspace"
             onerror="this.style.display='none'"
         >
         <div class="hero-overlay"></div>
 
         <div class="hero-inner">
-            <div class="hero-badge">⭐ Trusted <span class="highlight-yellow">CA</span> & Tax Consultant in <span class="highlight-pink">Bijoliya</span></div>
-            <h1>Your Trusted <span class="highlight-gold">CA</span> & <span class="highlight-pink">Financial</span> Partner</h1>
-            <p>Complete Accounting, <span class="highlight-yellow">GST</span>, <span class="highlight-pink">ITR</span>, <span class="highlight-blue">Loans</span> & E-Mitra Services in Bijoliya. One-stop reliable solution for all your business, taxation & digital needs.</p>
+            <div class="hero-badge">⭐ Trusted CA Services in Bijoliya</div>
+            <h1>Your Trusted <span class="hero-accent-gold">CA</span> &amp; <span class="hero-accent-pink">Financial</span> Partner</h1>
+            <p>Accounting, <span class="hero-accent-gold">GST</span>, <span class="hero-accent-pink">ITR</span>, <span class="hero-accent-gold">Loans</span> &amp; E-Mitra Services. One-stop solution for all your CA, financial &amp; digital needs.</p>
             
             <div class="hero-btns">
                 <a href="tel:+917737740207" class="btn btn-call">📞 Call: +91 7737740207</a>
@@ -984,8 +1047,8 @@
         </div>
     </section>
 
-    <!-- 3. ELEVATED STATS BAR -->
-    <div class="stats-container fade-up">
+    <!-- 3. STATS BAR -->
+    <div class="stats-container">
         <div class="stat-item">
             <h3>10+</h3>
             <p>Years Exp.</p>
@@ -1004,232 +1067,226 @@
         </div>
     </div>
 
-    <!-- 4. 'OUR CA SERVICES' 3-COLUMN GRID WITH REAL PHOTOGRAPHIC BACKGROUNDS & COLOR-MATCHED CARDS -->
-    <div class="section-header fade-up" id="services">
+    <!-- 4. OUR CA SERVICES SECTION -->
+    <div class="section-header" id="services">
         <h2>Our <span class="highlight-yellow">CA</span> Services</h2>
         <p>पूरी जानकारी और आवश्यक दस्तावेज़ (Documents) देखने के लिए किसी भी सर्विस पर क्लिक करें</p>
         <div class="line"></div>
     </div>
+
     <div class="services-grid">
-        <!-- Service 1: GST Registration & Returns (Warm Amber-Gold Theme) -->
-        <button type="button" class="service-card theme-gst fade-up" onclick="openServiceModal('gst')">
+        <!-- Service 1: GST Registration & Returns (CA) -->
+        <button type="button" class="service-card fallback-gst" onclick="openServiceModal('gst')">
             <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80" 
-                alt="GST Invoice and Tax Calculation"
+                class="service-card-img" 
+                src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=85" 
+                alt="GST Registration and Tax Returns"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
-            <div class="card-glass-overlay"></div>
-            <div class="service-icon">🧾</div>
-            <h3><span class="highlight-yellow">GST</span> Registration &amp; Returns (CA)</h3>
-            <span class="service-tap-hint">Details देखें →</span>
+            <div class="service-card-overlay"></div>
+            <div class="service-top-row">
+                <span class="service-icon-badge">🧾</span>
+                <span class="service-ca-pill">GST</span>
+            </div>
+            <div class="service-bottom-content">
+                <h3><span class="gold-word">GST</span> Registration &amp; Returns (CA)</h3>
+                <span class="service-tap-btn">Details देखें →</span>
+            </div>
         </button>
 
-        <!-- Service 2: Income Tax Return - ITR (Soft Rose-Pink Theme) -->
-        <button type="button" class="service-card theme-itr fade-up" onclick="openServiceModal('itr')">
+        <!-- Service 2: Income Tax Return (ITR) - CA -->
+        <button type="button" class="service-card fallback-itr" onclick="openServiceModal('itr')">
             <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=80" 
-                alt="Income Tax Return and Financial Planning"
+                class="service-card-img" 
+                src="https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=800&q=85" 
+                alt="Income Tax Return ITR Filing"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
-            <div class="card-glass-overlay"></div>
-            <div class="service-icon">💰</div>
-            <h3>Income Tax Return (<span class="highlight-pink">ITR</span>) - CA</h3>
-            <span class="service-tap-hint">Details देखें →</span>
+            <div class="service-card-overlay"></div>
+            <div class="service-top-row">
+                <span class="service-icon-badge">💰</span>
+                <span class="service-ca-pill">ITR</span>
+            </div>
+            <div class="service-bottom-content">
+                <h3>Income Tax Return (<span class="gold-word">ITR</span>) - CA</h3>
+                <span class="service-tap-btn">Details देखें →</span>
+            </div>
         </button>
 
-        <!-- Service 3: Home & Business Loans (Sky-Blue Theme) -->
-        <button type="button" class="service-card theme-loan fade-up" onclick="openServiceModal('loan')">
+        <!-- Service 3: Home & Business Loans -->
+        <button type="button" class="service-card fallback-loan" onclick="openServiceModal('loan')">
             <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" 
+                class="service-card-img" 
+                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=85" 
                 alt="Home and Business Loans"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
-            <div class="card-glass-overlay"></div>
-            <div class="service-icon">🏠</div>
-            <h3>Home &amp; Business <span class="highlight-blue">Loans</span></h3>
-            <span class="service-tap-hint">Details देखें →</span>
+            <div class="service-card-overlay"></div>
+            <div class="service-top-row">
+                <span class="service-icon-badge">🏠</span>
+                <span class="service-ca-pill">LOANS</span>
+            </div>
+            <div class="service-bottom-content">
+                <h3>Home &amp; Business <span class="gold-word">Loans</span></h3>
+                <span class="service-tap-btn">Details देखें →</span>
+            </div>
         </button>
 
-        <!-- Service 4: E-Mitra & Online Forms (Emerald-Teal Theme) -->
-        <button type="button" class="service-card theme-emitra fade-up" onclick="openServiceModal('emitra')">
+        <!-- Service 4: E-Mitra & Online Forms -->
+        <button type="button" class="service-card fallback-emitra" onclick="openServiceModal('emitra')">
             <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" 
+                class="service-card-img" 
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" 
                 alt="E-Mitra and Digital Online Forms"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
-            <div class="card-glass-overlay"></div>
-            <div class="service-icon">💻</div>
-            <h3>E-Mitra &amp; Online Forms</h3>
-            <span class="service-tap-hint">Details देखें →</span>
+            <div class="service-card-overlay"></div>
+            <div class="service-top-row">
+                <span class="service-icon-badge">💻</span>
+                <span class="service-ca-pill">E-MITRA</span>
+            </div>
+            <div class="service-bottom-content">
+                <h3><span class="gold-word">E-Mitra</span> &amp; Online Forms</h3>
+                <span class="service-tap-btn">Details देखें →</span>
+            </div>
         </button>
 
-        <!-- Service 5: Company / MSME Reg. (Indigo-Violet Theme) -->
-        <button type="button" class="service-card theme-company fade-up" onclick="openServiceModal('company')">
+        <!-- Service 5: Company / MSME Reg. (CA) -->
+        <button type="button" class="service-card fallback-company" onclick="openServiceModal('company')">
             <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" 
+                class="service-card-img" 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=85" 
                 alt="Company and MSME Registration"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
-            <div class="card-glass-overlay"></div>
-            <div class="service-icon">🏢</div>
-            <h3>Company / MSME Reg. (<span class="highlight-yellow">CA</span>)</h3>
-            <span class="service-tap-hint">Details देखें →</span>
+            <div class="service-card-overlay"></div>
+            <div class="service-top-row">
+                <span class="service-icon-badge">🏢</span>
+                <span class="service-ca-pill">MSME</span>
+            </div>
+            <div class="service-bottom-content">
+                <h3>Company / <span class="gold-word">MSME</span> Reg. (CA)</h3>
+                <span class="service-tap-btn">Details देखें →</span>
+            </div>
         </button>
 
-        <!-- Service 6: Electricity Dept. Works (Warm Saffron-Orange Theme) -->
-        <button type="button" class="service-card theme-electricity fade-up" onclick="openServiceModal('electricity')">
+        <!-- Service 6: Electricity Dept. Works -->
+        <button type="button" class="service-card fallback-electricity" onclick="openServiceModal('electricity')">
             <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" 
-                alt="Electricity Department and Power Infrastructure"
+                class="service-card-img" 
+                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=85" 
+                alt="Electricity Department Works"
                 loading="lazy"
                 onerror="this.style.display='none'"
             >
-            <div class="card-glass-overlay"></div>
-            <div class="service-icon">⚡</div>
-            <h3>Electricity Dept. Works</h3>
-            <span class="service-tap-hint">Details देखें →</span>
+            <div class="service-card-overlay"></div>
+            <div class="service-top-row">
+                <span class="service-icon-badge">⚡</span>
+                <span class="service-ca-pill">AVVNL</span>
+            </div>
+            <div class="service-bottom-content">
+                <h3><span class="gold-word">Electricity</span> Dept. Works</h3>
+                <span class="service-tap-btn">Details देखें →</span>
+            </div>
         </button>
     </div>
 
-    <!-- 5. 'LATEST CA UPDATES & BLOGS' 2-COLUMN GRID WITH REAL HD PHOTOGRAPHY -->
-    <div class="section-header fade-up" id="blogs">
+    <!-- 5. LATEST CA UPDATES & BLOGS SECTION -->
+    <div class="section-header" id="blogs">
         <h2>Latest <span class="highlight-yellow">CA</span> Updates &amp; Blogs</h2>
         <p>टैक्स, लोन और सरकारी योजनाओं की ताज़ा जानकारी पढ़ें</p>
         <div class="line"></div>
     </div>
+
     <div class="blog-container">
-        
-        <!-- Blog 1: GST Dates -->
-        <button type="button" class="blog-card fade-up" onclick="openBlogModal('gst-dates')">
-            <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80" 
-                alt="GST Filing Calendar Deadlines"
-                loading="lazy"
-                onerror="this.style.display='none'"
-            >
-            <div class="blog-overlay"></div>
-            <div class="blog-img-thumb">
+        <!-- Blog 1 -->
+        <button type="button" class="blog-card" onclick="openBlogModal('gst-dates')">
+            <div class="blog-banner-wrap">
                 <img 
-                    src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80" 
-                    alt="GST Return Dates 2026"
+                    src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=85" 
+                    alt="GST Return Filing Calendar 2026"
                     loading="lazy"
                     onerror="this.style.display='none'"
                 >
-                <span class="blog-emoji-badge">📰</span>
+                <span class="blog-banner-tag">GST Update (CA)</span>
             </div>
-            <div class="blog-content">
+            <div class="blog-body">
                 <div>
-                    <span class="blog-tag">GST Update (CA)</span>
                     <h4><span class="highlight-yellow">GST</span> रिटर्न फाइल करने की नई तारीखें (2026)</h4>
-                    <p>जानें कि इस साल <span class="highlight-yellow">GST</span> रिटर्न भरने की लास्ट डेट क्या है और लेट फीस से कैसे बचें।</p>
+                    <p>जानें कि इस साल GST रिटर्न भरने की लास्ट डेट क्या है और लेट फीस व पेनल्टी से कैसे बचें।</p>
                 </div>
-                <span class="read-more">पूरा लेख पढ़ें →</span>
+                <span class="read-more">Read More →</span>
             </div>
         </button>
 
-        <!-- Blog 2: ITR Benefits -->
-        <button type="button" class="blog-card fade-up" onclick="openBlogModal('itr-benefits')">
-            <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
-                alt="Income Tax Return Financial Growth"
-                loading="lazy"
-                onerror="this.style.display='none'"
-            >
-            <div class="blog-overlay"></div>
-            <div class="blog-img-thumb">
+        <!-- Blog 2 -->
+        <button type="button" class="blog-card" onclick="openBlogModal('itr-benefits')">
+            <div class="blog-banner-wrap">
                 <img 
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
-                    alt="ITR Filing Benefits"
+                    src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=85" 
+                    alt="Income Tax Return ITR Benefits"
                     loading="lazy"
                     onerror="this.style.display='none'"
                 >
-                <span class="blog-emoji-badge">📊</span>
+                <span class="blog-banner-tag">Income Tax (CA)</span>
             </div>
-            <div class="blog-content">
+            <div class="blog-body">
                 <div>
-                    <span class="blog-tag">Income Tax (CA)</span>
                     <h4><span class="highlight-pink">ITR</span> फाइल करने के 5 बड़े फायदे</h4>
-                    <p>क्या आप जानते हैं कि <span class="highlight-pink">ITR</span> फाइल करने से आपको लोन और वीजा में कैसे मदद मिलती है?</p>
+                    <p>क्या आप जानते हैं कि ITR फाइल करने से आपको बैंक लोन, TDS रिफंड और वीजा में कैसे मदद मिलती है?</p>
                 </div>
-                <span class="read-more">पूरा लेख पढ़ें →</span>
+                <span class="read-more">Read More →</span>
             </div>
         </button>
 
-        <!-- Blog 3: Mudra Loan -->
-        <button type="button" class="blog-card fade-up" onclick="openBlogModal('mudra-loan')">
-            <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" 
-                alt="Mudra Business Loan Scheme"
-                loading="lazy"
-                onerror="this.style.display='none'"
-            >
-            <div class="blog-overlay"></div>
-            <div class="blog-img-thumb">
+        <!-- Blog 3 -->
+        <button type="button" class="blog-card" onclick="openBlogModal('mudra-loan')">
+            <div class="blog-banner-wrap">
                 <img 
-                    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" 
-                    alt="Mudra Loan Guide"
+                    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=85" 
+                    alt="Mudra Loan Scheme Guide"
                     loading="lazy"
                     onerror="this.style.display='none'"
                 >
-                <span class="blog-emoji-badge">🏦</span>
+                <span class="blog-banner-tag">Loan Scheme</span>
             </div>
-            <div class="blog-content">
+            <div class="blog-body">
                 <div>
-                    <span class="blog-tag">Loan Scheme</span>
-                    <h4><span class="highlight-blue">Mudra Loan</span> (मुद्रा लोन) कैसे लें?</h4>
-                    <p>छोटे बिजनेस के लिए सरकारी सब्सिडी वाला लोन पाने का पूरा तरीका।</p>
+                    <h4><span class="highlight-yellow">Mudra Loan</span> (मुद्रा लोन) कैसे लें?</h4>
+                    <p>छोटे बिजनेस और दुकानदारों के लिए सरकारी सब्सिडी वाला लोन पाने का पूरा और आसान तरीका।</p>
                 </div>
-                <span class="read-more">पूरा लेख पढ़ें →</span>
+                <span class="read-more">Read More →</span>
             </div>
         </button>
 
-        <!-- Blog 4: MSME Registration -->
-        <button type="button" class="blog-card fade-up" onclick="openBlogModal('msme-reg')">
-            <img 
-                class="card-photo" 
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" 
-                alt="MSME Udyam Business Registration"
-                loading="lazy"
-                onerror="this.style.display='none'"
-            >
-            <div class="blog-overlay"></div>
-            <div class="blog-img-thumb">
+        <!-- Blog 4 -->
+        <button type="button" class="blog-card" onclick="openBlogModal('msme-reg')">
+            <div class="blog-banner-wrap">
                 <img 
-                    src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" 
-                    alt="MSME Registration Benefits"
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=85" 
+                    alt="MSME Udyam Registration Benefits"
                     loading="lazy"
                     onerror="this.style.display='none'"
                 >
-                <span class="blog-emoji-badge">🏢</span>
+                <span class="blog-banner-tag">Business (CA)</span>
             </div>
-            <div class="blog-content">
+            <div class="blog-body">
                 <div>
-                    <span class="blog-tag">Business (CA)</span>
-                    <h4><span class="highlight-yellow">MSME</span> रजिस्ट्रेशन के फायदे</h4>
-                    <p>छोटे कारोबारियों के लिए सरकारी योजनाओं का लाभ उठाने का सबसे आसान तरीका।</p>
+                    <h4><span class="highlight-pink">MSME</span> रजिस्ट्रेशन के फायदे</h4>
+                    <p>छोटे कारोबारियों के लिए सरकारी योजनाओं, सस्ते लोन और सब्सिडी का लाभ उठाने का सबसे आसान तरीका।</p>
                 </div>
-                <span class="read-more">पूरा लेख पढ़ें →</span>
+                <span class="read-more">Read More →</span>
             </div>
         </button>
-
     </div>
 
-    <!-- 6. QUICK FREE CONSULTATION / WHATSAPP INQUIRY FORM -->
-    <section class="inquiry-section fade-up" id="contact">
+    <!-- 6. QUICK WHATSAPP CONSULTATION FORM -->
+    <section class="inquiry-section" id="contact">
         <div class="section-header" style="margin-top: 10px;">
             <h2>Free <span class="highlight-pink">Consultation</span> &amp; Inquiry</h2>
             <p>अपनी जानकारी भरें और सीधे WhatsApp पर तुरंत सहायता प्राप्त करें</p>
@@ -1273,8 +1330,8 @@
         </div>
     </section>
 
-    <!-- 7. COLORFUL SOCIAL LINKS SECTION -->
-    <div class="social-section fade-up">
+    <!-- 7. SOCIAL LINKS SECTION -->
+    <div class="social-section">
         <h3>Connect With Us</h3>
         <p>बिजोलिया में सभी टैक्स और वित्तीय अपडेट्स के लिए हमसे जुड़ें</p>
         <div class="social-links">
@@ -1296,10 +1353,10 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- 8. FOOTER -->
     <footer>
-        <h3>Jain <span class="highlight-yellow">CA</span> Accounting &amp; Book-Keeping</h3>
-        <p>Your Trusted <span class="highlight-yellow">CA</span>, Financial, Loan &amp; Digital Services Partner</p>
+        <h3>Jain <span>CA</span> Accounting &amp; Book-Keeping</h3>
+        <p>Your Trusted CA, Financial, Loan &amp; Digital Services Partner</p>
         
         <div class="footer-contact-pills">
             <a href="tel:+917737740207" class="footer-pill">📞 +91 7737740207</a>
@@ -1314,10 +1371,10 @@
             <button type="button" onclick="openServiceModal('emitra')">E-Mitra</button>
             <button type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
         </div>
-        <p style="margin-top: 22px; font-size: 11px; color: #94a3b8;">© 2026 Jain Accounting &amp; Book-Keeping, Bijoliya. All Rights Reserved.</p>
+        <p style="margin-top: 22px; font-size: 11.5px; color: #94a3b8;">© 2026 Jain Accounting &amp; Book-Keeping, Bijoliya. All Rights Reserved.</p>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
+    <!-- PULSING FLOATING WHATSAPP BUTTON -->
     <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20have%20a%20query." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
     </a>
@@ -1333,7 +1390,7 @@
                 <!-- Dynamic Content Injected Here -->
             </div>
             <div class="modal-footer">
-                <a href="tel:+917737740207" style="background: var(--gold); color: var(--header-blue);">📞 Call Expert</a>
+                <a href="tel:+917737740207" style="background: var(--gold); color: #0f172a;">📞 Call Expert</a>
                 <a id="modalWaBtn" href="https://wa.me/917737740207" target="_blank" rel="noopener" style="background: var(--green); color: #ffffff;">💬 WhatsApp Now</a>
             </div>
         </div>
@@ -1342,22 +1399,9 @@
     <!-- CUSTOM TOAST NOTIFICATION -->
     <div class="toast-msg" id="toastMsg">Redirecting to WhatsApp...</div>
 
-    <!-- JAVASCRIPT FOR ANIMATIONS, MODALS & WHATSAPP FORM -->
+    <!-- JAVASCRIPT FOR INTERACTIVE MODALS & WHATSAPP INQUIRY -->
     <script>
-        // 1. Scroll Reveal Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach((el) => {
-            observer.observe(el);
-        });
-
-        // 2. Service Details Data
+        // 1. Service Details & Required Documents Data
         const servicesData = {
             gst: {
                 title: "🧾 GST Registration & Monthly/Quarterly Returns",
@@ -1433,7 +1477,7 @@
             }
         };
 
-        // 3. Full Blog Articles Data
+        // 2. Full Hindi/English Blog Articles Data
         const blogsData = {
             'gst-dates': {
                 title: "📰 GST रिटर्न फाइल करने की महत्वपूर्ण तारीखें (2026)",
@@ -1511,7 +1555,7 @@
                 <p>${data.desc}</p>
                 <div class="modal-list-title">${data.listTitle}</div>
                 <ul class="modal-list">${listItemsHtml}</ul>
-                <p style="font-size: 12px; color: #64748b; background: #eff6ff; padding: 10px; border-radius: 8px;">
+                <p style="font-size: 12.5px; color: #475569; background: #eff6ff; padding: 10px 12px; border-radius: 10px; border: 1px solid #bfdbfe;">
                     📍 <strong>ऑफिस पता:</strong> जैन अकाउंटिंग एंड बुक-कीपिंग, बिजोलिया (राजस्थान)
                 </p>
             `;
@@ -1550,7 +1594,7 @@
             }
         });
 
-        // 4. WhatsApp Consultation Form Submission
+        // 3. WhatsApp Consultation Form Submission
         function showToast(text) {
             const toast = document.getElementById('toastMsg');
             toast.textContent = text;
@@ -1585,7 +1629,7 @@
             
             setTimeout(() => {
                 window.open(waUrl, '_blank', 'noopener');
-            }, 400);
+            }, 350);
         }
     </script>
 </body>
