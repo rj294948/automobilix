@@ -1,448 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bikes - AutoMobilix</title>
-    <meta name="description" content="Latest bike models with specifications, prices, and launch dates. Find your perfect motorcycle.">
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8089328615109878" crossorigin="anonymous"></script>
-    
+    <title>E-Mitra & Online Forms | Jain Accounting, Bijoliya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #64748b;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --shadow: 0 10px 25px rgba(0,0,0,0.1);
-            --radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: var(--dark);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .page-hero {
-            text-align: center;
-            padding: 3rem 0;
-            color: white;
-        }
-
-        .page-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Controls */
-        .controls {
-            background: white;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .control-input {
-            padding: 0.75rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .control-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: var(--secondary);
-            grid-column: 1 / -1;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--secondary);
-            grid-column: 1 / -1;
-        }
-
-        /* Ad Container */
-        .ad-container {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .controls {
-                grid-template-columns: 1fr;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', 'Noto Sans Devanagari', sans-serif; }
+        body { background: #f1f5f9; color: #0f172a; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        header { position: sticky; top: 0; z-index: 900; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1.5px solid rgba(251, 191, 36, 0.5); }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 44px; height: 44px; background: linear-gradient(145deg, #fde047, #f59e0b); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #0f172a; font-size: 18px; }
+        .logo-text h2 { font-size: 18px; font-weight: 800; color: #fff; line-height: 1.2; }
+        .logo-text span { font-size: 11px; color: #fde047; font-weight: 700; display: block; }
+        .nav-links { display: none; gap: 8px; }
+        .nav-links a { color: #e2e8f0; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; }
+        .nav-links a:hover, .nav-links a.active { background: rgba(253, 224, 71, 0.2); color: #fde047; }
+        @media (min-width: 860px) { .nav-links { display: flex; } }
+        .call-btn { background: linear-gradient(135deg, #fde047, #f59e0b); color: #0f172a; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; white-space: nowrap; }
+        .page-hero { background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%); color: #fff; padding: 44px 20px; text-align: center; }
+        .badge { display: inline-block; background: rgba(253, 224, 71, 0.16); border: 1px solid #fde047; color: #fde047; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 800; margin-bottom: 12px; }
+        .page-hero h1 { font-size: clamp(24px, 4.5vw, 40px); font-weight: 800; margin-bottom: 10px; }
+        .page-hero p { max-width: 680px; margin: 0 auto; color: #ccfbf1; font-size: 15px; }
+        .container { max-width: 960px; margin: 28px auto 56px; padding: 0 16px; display: grid; gap: 20px; }
+        .card { background: #fff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 24px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06); }
+        .card h2 { font-size: 20px; font-weight: 800; color: #0f766e; margin-bottom: 12px; }
+        .doc-list { list-style: none; display: grid; gap: 10px; }
+        .doc-list li { background: #f8fafc; border-left: 4px solid #0d9488; padding: 10px 14px; border-radius: 8px; font-weight: 600; font-size: 14px; }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+        .btn { padding: 12px 22px; border-radius: 12px; font-weight: 800; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-gold { background: linear-gradient(135deg, #fde047, #f59e0b); color: #0f172a; }
+        .btn-wa { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; }
+        .btn-back { background: #e2e8f0; color: #0f172a; }
+        footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 28px 16px; font-size: 13px; }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="logo">
-                    <span>🚗</span>
-                    <span>AutoMobilix</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="cars.html">Cars</a></li>
-                    <li><a href="bikes.html" class="active">Bikes</a></li>
-                    <li><a href="scooters.html">Scooters</a></li>
-                    <li><a href="mobiles.html">Mobiles</a></li>
-                    <li><a href="admin.html">Admin</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">CA</div>
+            <div class="logo-text"><h2>JAIN ACCOUNTING</h2><span>Bijoliya, Rajasthan</span></div>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service-gst.html">GST</a>
+            <a href="service-itr.html">ITR</a>
+            <a href="service-loan.html">Loans</a>
+            <a href="service-emitra.html" class="active">E-Mitra</a>
+            <a href="service-company.html">MSME</a>
+            <a href="service-electricity.html">Electricity</a>
+        </nav>
+        <a href="tel:+917737740207" class="call-btn">📞 Call Now</a>
     </header>
 
     <section class="page-hero">
-        <div class="container">
-            <h1>Latest Bikes</h1>
-            <p>Explore the newest motorcycle models and specifications</p>
-        </div>
+        <div class="badge">💻 DIGITAL &amp; E-MITRA SERVICES</div>
+        <h1>E-Mitra &amp; Online Forms</h1>
+        <p>प्रमाण पत्र, जन आधार, PAN कार्ड, छात्रवृत्ति, पेंशन और सरकारी/गैर-सरकारी ऑनलाइन आवेदन एक ही स्थान पर।</p>
     </section>
 
     <main class="container">
-        <!-- Google AdSense Ad -->
-        <div class="ad-container">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8089328615109878" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-8089328615109878"
-                 data-ad-slot="1234567894"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+        <div class="card">
+            <h2>प्रमुख ई-मित्र व ऑनलाइन सेवाएं</h2>
+            <p>बिजोलिया क्षेत्र के नागरिकों के लिए सभी प्रमाण पत्रों के आवेदन, दस्तावेज़ अपलोड, प्रिंटिंग और ऑनलाइन फॉर्म भरने की विश्वसनीय सुविधा।</p>
         </div>
 
-        <!-- Search & Filter Controls -->
-        <div class="controls">
-            <input type="text" class="control-input" placeholder="Search bikes..." id="searchBikes">
-            <select class="control-input" id="filterCompany">
-                <option value="">All Companies</option>
-            </select>
-            <select class="control-input" id="filterPrice">
-                <option value="">All Prices</option>
-                <option value="low">Under ₹1 Lakh</option>
-                <option value="medium">₹1L - ₹3L</option>
-                <option value="high">Above ₹3L</option>
-            </select>
-        </div>
-
-        <!-- Bikes Grid -->
-        <div class="grid" id="bikes-container">
-            <div class="loading">
-                <h3>Loading Bikes...</h3>
-                <p>Please wait while we fetch the latest bikes</p>
+        <div class="card">
+            <h2>उपलब्ध सेवाएं एवं सामान्य दस्तावेज़</h2>
+            <ul class="doc-list">
+                <li>✓ मूल निवास, जाति प्रमाण पत्र और EWS प्रमाण पत्र आवेदन</li>
+                <li>✓ जन आधार कार्ड अपडेट, नाम जोड़ना व राशन कार्ड सेवाएं</li>
+                <li>✓ नया PAN कार्ड आवेदन व सुधार (Correction)</li>
+                <li>✓ सामान्य दस्तावेज़: पहचान पत्र, पते का प्रमाण, फोटो व मोबाइल नंबर</li>
+            </ul>
+            <div class="cta-row">
+                <a href="https://wa.me/917737740207?text=Hello%20Jain%20Accounting,%20I%20need%20E-Mitra%20/%20Online%20form%20assistance." target="_blank" rel="noopener" class="btn btn-wa">💬 WhatsApp Enquiry</a>
+                <a href="tel:+917737740207" class="btn btn-gold">📞 Call +91 7737740207</a>
+                <a href="index.html" class="btn btn-back">← Back to Home</a>
             </div>
-        </div>
-
-        <!-- Another Google AdSense Ad -->
-        <div class="ad-container">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8089328615109878" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="fluid"
-                 data-ad-layout-key="-gw-3+1f-3d+2z"
-                 data-ad-client="ca-pub-8089328615109878"
-                 data-ad-slot="1234567895"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 AutoMobilix. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script type="module">
-        import { db, collection, getDocs, query, where } from './firebase-config.js';
-
-        // Load bikes from Firebase with search and filter
-        async function loadBikes() {
-            try {
-                const q = query(collection(db, "products"), where("category", "==", "bikes"));
-                const querySnapshot = await getDocs(q);
-                const bikes = [];
-                querySnapshot.forEach((doc) => {
-                    bikes.push({ id: doc.id, ...doc.data() });
-                });
-                
-                const searchTerm = document.getElementById('searchBikes').value.toLowerCase();
-                const companyFilter = document.getElementById('filterCompany').value;
-                const priceFilter = document.getElementById('filterPrice').value;
-                
-                let filteredBikes = bikes;
-                
-                // Apply search filter
-                if (searchTerm) {
-                    filteredBikes = filteredBikes.filter(bike => 
-                        bike.name.toLowerCase().includes(searchTerm) ||
-                        bike.company.toLowerCase().includes(searchTerm) ||
-                        (bike.type && bike.type.toLowerCase().includes(searchTerm))
-                    );
-                }
-                
-                // Apply company filter
-                if (companyFilter) {
-                    filteredBikes = filteredBikes.filter(bike => bike.company === companyFilter);
-                }
-                
-                // Apply price filter
-                if (priceFilter) {
-                    filteredBikes = filteredBikes.filter(bike => {
-                        const priceNum = parseInt(bike.price.replace(/[^\d]/g, '')) || 0;
-                        if (priceFilter === 'low') return priceNum < 100000;
-                        if (priceFilter === 'medium') return priceNum >= 100000 && priceNum <= 300000;
-                        if (priceFilter === 'high') return priceNum > 300000;
-                        return true;
-                    });
-                }
-                
-                const container = document.getElementById('bikes-container');
-                
-                if (filteredBikes.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-state">
-                            <h3>No Bikes Found</h3>
-                            <p>Try adjusting your search filters or add bikes through the admin panel.</p>
-                            <a href="admin.html" class="btn" style="margin-top: 1rem;">Add Bikes Now</a>
-                        </div>
-                    `;
-                    return;
-                }
-
-                container.innerHTML = filteredBikes.map(bike => `
-                    <div class="card">
-                        <img src="${bike.image}" alt="${bike.name}" class="card-image" 
-                             onerror="this.src='https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400'">
-                        <div class="card-content">
-                            <h3 class="card-title">${bike.name}</h3>
-                            <div class="card-price">${bike.price}</div>
-                            <p><strong>Company:</strong> ${bike.company}</p>
-                            <p><strong>Type:</strong> ${bike.type}</p>
-                            <p><strong>Launch Date:</strong> ${new Date(bike.launch_date).toLocaleDateString()}</p>
-                            <p>${bike.description}</p>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error("Error loading bikes:", error);
-                document.getElementById('bikes-container').innerHTML = `
-                    <div class="empty-state">
-                        <h3>Error Loading Bikes</h3>
-                        <p>Please try again later.</p>
-                    </div>
-                `;
-            }
-        }
-
-        // Populate company filter
-        async function populateCompanyFilter() {
-            try {
-                const q = query(collection(db, "products"), where("category", "==", "bikes"));
-                const querySnapshot = await getDocs(q);
-                const bikes = [];
-                querySnapshot.forEach((doc) => {
-                    bikes.push({ id: doc.id, ...doc.data() });
-                });
-                
-                const companies = [...new Set(bikes.map(bike => bike.company))];
-                const filter = document.getElementById('filterCompany');
-                
-                // Clear existing options except the first one
-                while (filter.children.length > 1) {
-                    filter.removeChild(filter.lastChild);
-                }
-                
-                companies.forEach(company => {
-                    const option = document.createElement('option');
-                    option.value = company;
-                    option.textContent = company;
-                    filter.appendChild(option);
-                });
-            } catch (error) {
-                console.error('Error populating company filter:', error);
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                await populateCompanyFilter();
-                await loadBikes();
-                
-                // Add event listeners for real-time filtering
-                document.getElementById('searchBikes').addEventListener('input', loadBikes);
-                document.getElementById('filterCompany').addEventListener('change', loadBikes);
-                document.getElementById('filterPrice').addEventListener('change', loadBikes);
-            } catch (error) {
-                console.error('Error initializing page:', error);
-            }
-        });
-    </script>
+    <footer>© 2026 Jain Accounting &amp; Book-Keeping, Bijoliya, Rajasthan | +91 7737740207</footer>
 </body>
 </html>
