@@ -1116,6 +1116,53 @@
             box-shadow: 0 10px 26px rgba(37, 211, 102, 0.45);
         }
 
+        /* --- INLINE ENQUIRY STATUS & DIRECT WHATSAPP FALLBACK --- */
+        .inquiry-feedback {
+            display: none;
+            margin-top: 14px;
+            padding: 13px 16px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 700;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        .inquiry-feedback.error {
+            display: block;
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1.5px solid #fca5a5;
+        }
+
+        .inquiry-feedback.success {
+            display: block;
+            background: #f0fdf4;
+            color: #166534;
+            border: 1.5px solid #86efac;
+        }
+
+        .direct-wa-backup {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 9px 18px;
+            border-radius: 50px;
+            background: #16a34a;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.28);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .direct-wa-backup:hover {
+            background: #15803d;
+            transform: translateY(-1px);
+        }
+
         /* --- 8. SOCIAL LINKS SECTION --- */
         .social-section {
             text-align: center;
@@ -1762,22 +1809,22 @@
     </section>
 
     <!-- 7. QUICK FREE CONSULTATION WHATSAPP INQUIRY FORM -->
-    <section class="inquiry-section" id="contact">
+    <section class="inquiry-section" id="enquiry">
         <div class="section-header" style="margin-top: 10px;">
             <h2>Free <span class="highlight-pink">Consultation</span> &amp; Inquiry</h2>
             <p>अपनी जानकारी भरें और सीधे WhatsApp पर तुरंत सहायता प्राप्त करें</p>
             <div class="line"></div>
         </div>
-        <div class="inquiry-card">
-            <form id="waInquiryForm" onsubmit="sendWhatsAppInquiry(event)">
+        <div class="inquiry-card" id="contact">
+            <form id="waInquiryForm" novalidate onsubmit="sendWhatsAppInquiry(event)">
                 <div class="inquiry-grid">
                     <div class="form-group">
                         <label for="clientName">आपका नाम (Your Name) *</label>
                         <input type="text" id="clientName" class="form-control" placeholder="उदा. राजेश जैन" required>
                     </div>
                     <div class="form-group">
-                        <label for="clientPhone">मोबाइल नंबर (Mobile Number) *</label>
-                        <input type="tel" id="clientPhone" class="form-control" placeholder="उदा. 98290XXXXX" required>
+                        <label for="clientPhone">मोबाइल नंबर (10-Digit Mobile Number) *</label>
+                        <input type="tel" id="clientPhone" class="form-control" inputmode="numeric" maxlength="15" placeholder="उदा. 98290XXXXX" required>
                     </div>
                     <div class="form-group inquiry-full">
                         <label for="serviceType">सेवा चुनें (Select Service) *</label>
@@ -1792,9 +1839,14 @@
                         </select>
                     </div>
                     <div class="form-group inquiry-full">
+                        <label for="clientMessage">अतिरिक्त विवरण (Optional Note)</label>
+                        <input type="text" id="clientMessage" class="form-control" placeholder="उदा. नया GST रजिस्ट्रेशन या ITR फाइलिंग करवाना है">
+                    </div>
+                    <div class="form-group inquiry-full">
                         <button type="submit" class="btn-submit-wa">
                             💬 Send Inquiry on WhatsApp
                         </button>
+                        <div id="inquiryFeedback" class="inquiry-feedback" role="status" aria-live="polite"></div>
                     </div>
                 </div>
             </form>
@@ -1976,6 +2028,7 @@
                     </ul>
                 `,
                 waText: "Hello Jain Accounting, I want to file my ITR after reading your article."
+            },
             'all-loans-guide': {
                 title: "🏦 Home, Business और MSME लोन कैसे लें?",
                 content: `
@@ -2072,27 +2125,70 @@
 
         function sendWhatsAppInquiry(event) {
             event.preventDefault();
-            const name = document.getElementById('clientName').value.trim();
-            const phone = document.getElementById('clientPhone').value.trim();
-            const service = document.getElementById('serviceType').value;
 
-            if (!name || !phone) {
-                showToast("कृपया नाम और मोबाइल नंबर भरें।");
+            const nameInput = document.getElementById('clientName');
+            const phoneInput = document.getElementById('clientPhone');
+            const serviceInput = document.getElementById('serviceType');
+            const noteInput = document.getElementById('clientMessage');
+            const feedbackBox = document.getElementById('inquiryFeedback');
+
+            const name = nameInput.value.trim();
+            const rawDigits = phoneInput.value.replace(/\D/g, '');
+            const normalizedPhone = rawDigits.length > 10 && rawDigits.startsWith('91')
+                ? rawDigits.slice(-10)
+                : rawDigits;
+            const service = serviceInput.value;
+            const note = noteInput ? noteInput.value.trim() : '';
+
+            // 1. Inline validation (zero browser alert() calls)
+            if (name.length < 2) {
+                feedbackBox.className = 'inquiry-feedback error';
+                feedbackBox.textContent = '⚠️ कृपया अपना सही नाम दर्ज करें (Please enter your name).';
+                nameInput.focus();
                 return;
             }
 
-            const whatsappMessage =
-                `*New Inquiry - Jain Accounting & Book-Keeping*\n\n` +
+            if (!/^[6-9]\d{9}$/.test(normalizedPhone)) {
+                feedbackBox.className = 'inquiry-feedback error';
+                feedbackBox.textContent = '⚠️ कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें (Enter a valid 10-digit Indian mobile number).';
+                phoneInput.focus();
+                return;
+            }
+
+            // 2. Construct properly encoded WhatsApp API link
+            let whatsappMessage =
+                `नमस्ते Jain Accounting & Book-Keeping,\n\n` +
                 `👤 *Name:* ${name}\n` +
-                `📞 *Mobile:* ${phone}\n` +
+                `📞 *Mobile:* +91 ${normalizedPhone}\n` +
                 `💼 *Service:* ${service}`;
 
-            const waUrl = `https://wa.me/917737740207?text=${encodeURIComponent(whatsappMessage)}`;
-            showToast("WhatsApp पर भेजा जा रहा है...");
+            if (note) {
+                whatsappMessage += `\n📝 *Details:* ${note}`;
+            }
 
-            setTimeout(() => {
-                window.open(waUrl, '_blank', 'noopener');
-            }, 350);
+            const waUrl = `https://api.whatsapp.com/send?phone=917737740207&text=${encodeURIComponent(whatsappMessage)}`;
+
+            // 3. Display instant green confirmation banner + direct clickable backup button
+            feedbackBox.className = 'inquiry-feedback success';
+            feedbackBox.innerHTML =
+                `✅ आपकी जानकारी तैयार है! WhatsApp खुल रहा है...<br>` +
+                `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="direct-wa-backup">Open WhatsApp Directly →</a>`;
+
+            showToast('Opening WhatsApp...');
+
+            // 4. Synchronous user-gesture anchor click + iframe/popup fallback
+            try {
+                const tempLink = document.createElement('a');
+                tempLink.href = waUrl;
+                tempLink.target = '_blank';
+                tempLink.rel = 'noopener noreferrer';
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+            } catch (err) {
+                window.location.href = waUrl;
+            }
         }
     </script>
 </body>
